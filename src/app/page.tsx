@@ -40,7 +40,7 @@ export default function Home() {
         <Reveal>
           <h1 className="text-5xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6">
             {t.hero.title} <br />
-            <span className="text-coral italic">{t.hero.titleAccent}</span>
+            <span className="text-coral italic uppercase tracking-tighter">{t.hero.titleAccent}</span>
           </h1>
         </Reveal>
 
@@ -60,13 +60,13 @@ export default function Home() {
         </Reveal>
 
         {/* Плейсхолдер для фото в органической форме */}
-        <Reveal delay={0.8}>
-          <div className="mt-16 w-64 h-64 md:w-80 md:h-80 bg-maize rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] overflow-hidden border-8 border-white shadow-2xl animate-float">
+        <Reveal delay={0.8} overflowVisible={true}>
+          <div className="mt-16 w-64 h-64 md:w-80 md:h-80 bg-maize rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] border-8 border-white shadow-2xl animate-float relative z-0">
             <img 
-							src="/images/me.jpg"
-							alt="Elizaveta" 
-							className="w-full h-full object-cover"
-						/>
+              src="/images/me.jpg" 
+              alt="Elizaveta" 
+              className="w-full h-full object-cover rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%]"
+            />
           </div>
         </Reveal>
       </section>
@@ -79,21 +79,20 @@ export default function Home() {
       {/* PROJECTS SECTION */}
       <section id="projects" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <Reveal>
+          <Reveal overflowVisible={true}>
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-              <div>
+              <div className="text-left">
                 <h2 className="text-5xl md:text-7xl font-black uppercase text-slate-900 tracking-tighter">
-                  Кейсы <span className="text-coral">★</span>
+                  {t.projects.title} <span className="text-coral">★</span>
                 </h2>
-                <p className="text-slate-500 font-medium mt-2">Выбранные работы за 2023-2025</p>
+                <p className="text-slate-500 font-medium mt-2">{t.projects.subtitle} 2023-2025</p>
               </div>
               
-              {/* Фильтры (пока декоративные) */}
               <div className="flex gap-2 overflow-x-auto pb-2">
                 {['all', 'smm', 'ugc', 'production'].map((cat) => (
                   <button 
                     key={cat}
-                    className="px-6 py-2 rounded-full border-2 border-slate-200 font-bold hover:bg-white transition-all whitespace-nowrap"
+                    className="px-6 py-2 rounded-full border-2 border-slate-200 font-bold hover:bg-white transition-all whitespace-nowrap uppercase text-xs"
                   >
                     {t.projects[cat as keyof typeof t.projects] || cat}
                   </button>
@@ -102,10 +101,10 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* Masonry-like Grid */}
+          {/* GRID с фиксом обрезки при наведении */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {projects.map((project, index) => (
-              <Reveal key={project.id} delay={index * 0.1} width="100%">
+              <Reveal key={project.id} delay={index * 0.1} width="100%" overflowVisible={true}>
                 <ProjectCard project={project} lang={lang} />
               </Reveal>
             ))}

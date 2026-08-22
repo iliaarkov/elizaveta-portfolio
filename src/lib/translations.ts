@@ -14,19 +14,17 @@ export const translations = {
       cta: "Погрузиться в проекты"
     },
     projects: {
+      title: "КЕЙСЫ",
+      subtitle: "Выбранные работы за",
       all: "Все",
       smm: "SMM",
       ugc: "UGC",
       production: "Продакшн",
+      music: "Музыка",
+      client: "Клиент",
       view: "Смотреть"
     },
-		skills: ["Сценарии", "Монтаж", "Стратегия", "UGC", "Visual Identity", "CapCut", "Figma"],
-    contact: {
-      title: "Давай создадим шедевр!",
-      name: "Твое имя",
-      message: "О чем проект?",
-      send: "Отправить пузырь"
-    }
+    skills: ["Сценарии", "Монтаж", "Стратегия", "UGC", "Айдентика", "CapCut", "Figma"]
   },
   en: {
     nav: {
@@ -41,18 +39,16 @@ export const translations = {
       cta: "Dive into projects"
     },
     projects: {
+      title: "CASES",
+      subtitle: "Selected works for",
       all: "All",
       smm: "SMM",
       ugc: "UGC",
       production: "Production",
+      music: "Music",
+      client: "Client",
       view: "View"
     },
-		skills: ["Scriptwriting", "Editing", "Strategy", "UGC", "Visual Identity", "CapCut", "Figma"],
-    contact: {
-      title: "Let's create a masterpiece!",
-      name: "Your name",
-      message: "What's the project?",
-      send: "Send bubble"
-    }
+    skills: ["Scripts", "Editing", "Strategy", "UGC", "Visual Identity", "CapCut", "Figma"]
   }
 };

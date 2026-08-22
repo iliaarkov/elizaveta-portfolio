@@ -4,13 +4,14 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
-  // Заменили JSX.Element на React.ReactNode — это стандарт React 19
-  children: React.ReactNode; 
+  children: React.ReactNode;
   width?: "fit-content" | "100%";
   delay?: number;
+  // Добавим проп, чтобы отключать обрезку там, где это нужно
+  overflowVisible?: boolean; 
 }
 
-export const Reveal = ({ children, width = "fit-content", delay = 0.25 }: Props) => {
+export const Reveal = ({ children, width = "fit-content", delay = 0.25, overflowVisible = false }: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
@@ -22,7 +23,8 @@ export const Reveal = ({ children, width = "fit-content", delay = 0.25 }: Props)
   }, [isInView, mainControls]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: "hidden" }}>
+    // Убираем overflow: hidden если передан флаг overflowVisible
+    <div ref={ref} style={{ position: "relative", width, overflow: overflowVisible ? "visible" : "hidden" }}>
       <motion.div
         variants={{
           hidden: { opacity: 0, y: 75 },
