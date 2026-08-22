@@ -32,7 +32,7 @@ import { DynaPuff } from "next/font/google"; // Заменили на DynaPuff
 import "./globals.css";
 
 const dynaPuff = DynaPuff({ 
-  subsets: ["latin", "cyrillic"], // Теперь кириллица точно будет
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: 'swap',
 });
