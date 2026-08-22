@@ -42,9 +42,9 @@ export default function Home() {
         />
 
         <Reveal>
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6">
+          <h1 className="text-5xl md:text-8xl font-bold tracking-tight leading-[0.9] mb-6 uppercase">
             {t.hero.title} <br />
-            <span className="text-coral italic uppercase tracking-tighter">{t.hero.titleAccent}</span>
+            <span className="text-coral font-accent normal-case lowercase text-7xl md:text-9xl tracking-normal">{t.hero.titleAccent}</span>
           </h1>
         </Reveal>
 

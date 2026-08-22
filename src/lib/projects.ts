@@ -3,7 +3,7 @@ export interface Project {
   category: 'smm' | 'ugc' | 'production' | 'music';
   title: { ru: string; en: string };
   client: string;
-  videoUrl: string; // Сюда вставляй ссылку на видео (mp4 или YouTube/Vimeo)
+  videoUrl: string;
   thumbnail: string;
   metrics?: string;
   tags: string[];
