@@ -1,18 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #FAF4CD; /* Твой бежевый из референса */
-  --foreground: #1e293b;
-}
+/* Подключаем твой конфиг (важно для v4) */
+@config "../../tailwind.config.ts";
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  /* Добавляем легкую текстуру на фон, как в мультике */
-  background-image: radial-gradient(#e1712610 1px, transparent 1px);
-  background-size: 40px 40px;
+@layer base {
+  :root {
+    --background: #FAF4CD;
+    --foreground: #1e293b;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    background-image: radial-gradient(#e1712610 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
 }
 
 /* Кастомный класс для "пузырчатых" кнопок */
