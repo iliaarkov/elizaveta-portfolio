@@ -5,6 +5,9 @@ import { Locale, translations } from "@/lib/translations";
 import Navbar from "@/components/Navbar";
 import { Reveal } from "@/components/Reveal";
 import { motion } from "framer-motion";
+import { Marquee } from "@/components/Marquee";
+import { ProjectCard } from "@/components/ProjectCard";
+import { projects } from "@/lib/projects";
 
 export default function Home() {
   const [lang, setLang] = useState<Locale>("ru");
@@ -60,24 +63,56 @@ export default function Home() {
         <Reveal delay={0.8}>
           <div className="mt-16 w-64 h-64 md:w-80 md:h-80 bg-maize rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] overflow-hidden border-8 border-white shadow-2xl animate-float">
             <img 
-              src="https://via.placeholder.com/400x400" 
-              alt="Elizaveta" 
-              className="w-full h-full object-cover"
-            />
+							src="../../public/images/me.jpg"
+							alt="Elizaveta" 
+							className="w-full h-full object-cover"
+						/>
           </div>
         </Reveal>
       </section>
 
-      {/* Сюда дальше добавим блок Projects и Contact */}
-      <section id="projects" className="py-20 bg-white/30">
-          <div className="container mx-auto px-6">
-             <h2 className="text-4xl font-bold mb-12 uppercase text-center">{t.nav.projects}</h2>
-             {/* Тут будет сетка Masonry, которую сделаем следующим шагом */}
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <p className="text-center col-span-full opacity-50 italic">Сетка проектов подгрузится в следующем шаге...</p>
-             </div>
+			{/* MARQUEE SKILLS */}
+      <div className="my-10">
+        <Marquee items={t.skills} />
+      </div>
+
+      {/* PROJECTS SECTION */}
+      <section id="projects" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <Reveal>
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+              <div>
+                <h2 className="text-5xl md:text-7xl font-black uppercase text-slate-900 tracking-tighter">
+                  Кейсы <span className="text-coral">★</span>
+                </h2>
+                <p className="text-slate-500 font-medium mt-2">Выбранные работы за 2023-2025</p>
+              </div>
+              
+              {/* Фильтры (пока декоративные) */}
+              <div className="flex gap-2 overflow-x-auto pb-2">
+                {['all', 'smm', 'ugc', 'production'].map((cat) => (
+                  <button 
+                    key={cat}
+                    className="px-6 py-2 rounded-full border-2 border-slate-200 font-bold hover:bg-white transition-all whitespace-nowrap"
+                  >
+                    {t.projects[cat as keyof typeof t.projects] || cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Masonry-like Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            {projects.map((project, index) => (
+              <Reveal key={project.id} delay={index * 0.1}>
+                <ProjectCard project={project} lang={lang} />
+              </Reveal>
+            ))}
           </div>
+        </div>
       </section>
+
     </main>
   );
 }

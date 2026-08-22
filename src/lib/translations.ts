@@ -20,6 +20,7 @@ export const translations = {
       production: "Продакшн",
       view: "Смотреть"
     },
+		skills: ["Сценарии", "Монтаж", "Стратегия", "UGC", "Visual Identity", "CapCut", "Figma"],
     contact: {
       title: "Давай создадим шедевр!",
       name: "Твое имя",
@@ -46,6 +47,7 @@ export const translations = {
       production: "Production",
       view: "View"
     },
+		skills: ["Scriptwriting", "Editing", "Strategy", "UGC", "Visual Identity", "CapCut", "Figma"],
     contact: {
       title: "Let's create a masterpiece!",
       name: "Your name",
