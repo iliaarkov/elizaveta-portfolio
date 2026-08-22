@@ -7,10 +7,14 @@ import { Reveal } from "@/components/Reveal";
 import { motion } from "framer-motion";
 import { Marquee } from "@/components/Marquee";
 import { ProjectCard } from "@/components/ProjectCard";
+import { ProjectModal } from "@/components/ProjectModal";
+import { ContactSection } from "@/components/ContactSection";
 import { projects } from "@/lib/projects";
+import { Project } from "@/lib/projects";
 
 export default function Home() {
   const [lang, setLang] = useState<Locale>("ru");
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const t = translations[lang];
 
   return (
@@ -18,7 +22,7 @@ export default function Home() {
       <Navbar lang={lang} setLang={setLang} />
 
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
+      <section className="relative pt-52 pb-20 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
         {/* Декоративные элементы (те самые Flower Clouds) */}
         <motion.div 
           animate={{ 
@@ -102,16 +106,32 @@ export default function Home() {
           </Reveal>
 
           {/* GRID с фиксом обрезки при наведении */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {projects.map((project, index) => (
               <Reveal key={project.id} delay={index * 0.1} width="100%" overflowVisible={true}>
                 <ProjectCard project={project} lang={lang} />
               </Reveal>
             ))}
-          </div>
+          </div> */}
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+						{projects.map((project, index) => (
+							<div key={project.id} onClick={() => setSelectedProject(project)}>
+								<ProjectCard project={project} lang={lang} />
+							</div>
+						))}
+					</div>
         </div>
       </section>
 
+			<ContactSection lang={lang} />
+
+
+			<footer className="py-10 text-center text-slate-400 font-bold uppercase tracking-widest text-xs">
+				© 2026 Elizaveta Samokhovets — Built with bubbles
+			</footer>
+
+			<ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </main>
+
   );
 }

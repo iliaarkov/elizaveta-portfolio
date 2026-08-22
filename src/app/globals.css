@@ -7,6 +7,8 @@
   :root {
     --background: #FAF4CD;
     --foreground: #1e293b;
+		--font-montserrat: 'Montserrat', sans-serif;
+  	--font-accent: 'Satisfy', cursive;
   }
 
   body {
@@ -39,4 +41,7 @@
   background: #FCC74B;
   border-radius: 10px;
   border: 2px solid #FAF4CD;
+}
+.font-accent {
+  font-family: var(--font-accent);
 }

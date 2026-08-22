@@ -28,13 +28,19 @@
 // }
 
 import type { Metadata } from "next";
-import { DynaPuff } from "next/font/google"; // Заменили на DynaPuff
+import { Montserrat, Satisfy } from "next/font/google"; 
 import "./globals.css";
 
-const dynaPuff = DynaPuff({ 
+const montserrat = Montserrat({ 
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "500", "700", "900"],
+  variable: '--font-montserrat',
+});
+
+const satisfy = Satisfy({ 
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: 'swap',
+  weight: ["400"],
+  variable: '--font-accent',
 });
 
 export const metadata: Metadata = {
@@ -49,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`${dynaPuff.className} bg-beige text-slate-900 antialiased overflow-x-hidden`}>
+      <body className={`${montserrat.variable} ${satisfy.variable} font-sans bg-beige text-slate-900 antialiased overflow-x-hidden`}>
         {children}
       </body>
     </html>
