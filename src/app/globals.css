@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAF4CD; /* Твой бежевый из референса */
+  --foreground: #1e293b;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  /* Добавляем легкую текстуру на фон, как в мультике */
+  background-image: radial-gradient(#e1712610 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Кастомный класс для "пузырчатых" кнопок */
+.bubble-shadow {
+  box-shadow: 0 8px 0px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.bubble-shadow:active {
+  transform: translateY(4px);
+  box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для скроллбара в стиле Bikini Bottom */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF4CD;
+}
+::-webkit-scrollbar-thumb {
+  background: #FCC74B;
+  border-radius: 10px;
+  border: 2px solid #FAF4CD;
+}
