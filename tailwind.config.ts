@@ -1,3 +1,4 @@
+// tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -9,29 +10,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Палитра из твоих референсов
-        maize: "#FCC74B",
-        coral: "#F28983",
-        papaya: "#E17126",
-        junebud: "#C8D35F",
-        oceanBlue: "#93ABD8",
-        softPurple: "#B494F8",
-        beige: "#FAF4CD",
-        hotPink: "#F3619C",
+        phlox: "#CAA9F3",       // Светло-фиолетовый
+        verbena: "#B37AD4",     // Насыщенный фиолетовый
+        periwinkle: "#7997E6",  // Голубой
+        atlantis: "#206ABC",    // Синий
+        phthalo: "#0E155E",     // Глубокий темно-синий
+        beige: "#FAF4CD",       // Оставляем для фона как песок
+        coral: "#F28983",       // Оставим для акцентов (как кораллы)
       },
-      borderRadius: {
-        'bubble': '2rem',
-        'super-bubble': '4rem',
+      fontFamily: {
+        sans: ['var(--font-montserrat)'],
+        accent: ['var(--font-satisfy)'],
       },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' },
-        }
-      }
     },
   },
   plugins: [],

@@ -29,15 +29,15 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
           <div className="flex bg-beige rounded-full p-1 border border-slate-200">
             {(['ru', 'en'] as Locale[]).map((l) => (
               <button
-                key={l}
-                onClick={() => setLang(l)}
-                className={cn(
-                  "px-3 py-1 rounded-full text-xs font-bold uppercase transition-all",
-                  lang === l ? "bg-maize text-white shadow-sm" : "text-slate-400"
-                )}
-              >
-                {l}
-              </button>
+								key={l}
+								onClick={() => setLang(l)}
+								className={cn(
+									"px-3 py-1 rounded-full text-xs font-bold uppercase transition-all",
+									lang === l ? "bg-phthalo text-white" : "text-atlantis"
+								)}
+							>
+								{l}
+							</button>
             ))}
           </div>
         </div>

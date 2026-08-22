@@ -126,9 +126,11 @@ export default function Home() {
 			<ContactSection lang={lang} />
 
 
-			<footer className="py-10 text-center text-slate-400 font-bold uppercase tracking-widest text-xs">
-				© 2026 Elizaveta Samokhovets — Built with bubbles
-			</footer>
+			<footer className="py-12 bg-phthalo text-center border-t border-atlantis">
+        <p className="text-periwinkle font-bold uppercase tracking-widest text-xs">
+          © {new Date().getFullYear()} Elizaveta Samokhovets — {t.footer}
+        </p>
+      </footer>
 
 			<ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </main>
