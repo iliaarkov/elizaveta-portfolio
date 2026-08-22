@@ -59,11 +59,11 @@ export default function Home() {
           </a>
         </Reveal>
 
-        {/* Плейсхолдер для твоего фото в органической форме */}
+        {/* Плейсхолдер для фото в органической форме */}
         <Reveal delay={0.8}>
           <div className="mt-16 w-64 h-64 md:w-80 md:h-80 bg-maize rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] overflow-hidden border-8 border-white shadow-2xl animate-float">
             <img 
-							src="../../public/images/me.jpg"
+							src="/images/me.jpg"
 							alt="Elizaveta" 
 							className="w-full h-full object-cover"
 						/>
@@ -103,9 +103,9 @@ export default function Home() {
           </Reveal>
 
           {/* Masonry-like Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {projects.map((project, index) => (
-              <Reveal key={project.id} delay={index * 0.1}>
+              <Reveal key={project.id} delay={index * 0.1} width="100%">
                 <ProjectCard project={project} lang={lang} />
               </Reveal>
             ))}
