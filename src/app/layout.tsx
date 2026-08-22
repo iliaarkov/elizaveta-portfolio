@@ -3,8 +3,9 @@ import { Fredoka } from "next/font/google";
 import "./globals.css";
 
 const fredoka = Fredoka({ 
-  subsets: ["latin", "cyrillic"],
-  weight: ["300", "400", "500", "600", "700"] 
+  subsets: ["latin"], // Убрали cyrillic
+  weight: ["300", "400", "500", "600", "700"],
+  display: 'swap',
 });
 
 export const metadata: Metadata = {

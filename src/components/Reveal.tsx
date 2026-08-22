@@ -4,7 +4,8 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
-  children: JSX.Element;
+  // Заменили JSX.Element на React.ReactNode — это стандарт React 19
+  children: React.ReactNode; 
   width?: "fit-content" | "100%";
   delay?: number;
 }
