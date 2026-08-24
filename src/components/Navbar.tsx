@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { translations } from "@/lib/translations";
+import Link from "next/link";
 
 interface NavbarProps {
   lang: "ru" | "en";
@@ -41,14 +42,14 @@ export const Navbar = ({ lang, setLang }: NavbarProps) => {
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
         
         {/* LOGO */}
-        <a href="/" className="group flex items-center gap-2">
-          <div className="w-10 h-10 bg-phlox rounded-full flex items-center justify-center text-phthalo font-black text-xl font-playfair group-hover:bg-coral transition-colors duration-300">
-            E
-          </div>
-          <span className="font-playfair text-xl font-bold tracking-tighter text-phlox group-hover:text-periwinkle transition-colors hidden sm:block">
-            Samokhovets.
-          </span>
-        </a>
+        <Link href="/" className="group flex items-center gap-2">
+					<div className="w-10 h-10 bg-phlox rounded-full flex items-center justify-center text-phthalo font-black text-xl font-playfair group-hover:bg-coral transition-colors duration-300">
+						E
+					</div>
+					<span className="font-playfair text-xl font-bold tracking-tighter text-phlox group-hover:text-periwinkle transition-colors hidden sm:block">
+						Samokhovets.
+					</span>
+				</Link>
 
         {/* NAVIGATION LINKS */}
         <div className="flex items-center gap-8 md:gap-12">

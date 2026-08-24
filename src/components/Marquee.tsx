@@ -1,20 +1,34 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
-export const Marquee = ({ items }: { items: string[] }) => {
+interface MarqueeProps {
+  children: React.ReactNode;
+  speed?: number;
+}
+
+export const Marquee = ({ children, speed = 50 }: MarqueeProps) => {
   return (
-    <div className="relative flex overflow-x-hidden bg-maize py-4 border-y-4 border-white rotate-[-1deg] z-10 shadow-lg">
+    <div className="flex overflow-hidden whitespace-nowrap select-none">
       <motion.div
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ ease: "linear", duration: 20, repeat: Infinity }}
-        className="flex whitespace-nowrap"
+        transition={{
+          ease: "linear",
+          duration: speed,
+          repeat: Infinity,
+        }}
+        className="flex"
       >
-        {[...items, ...items].map((item, i) => (
-          <span key={i} className="text-2xl md:text-4xl font-black uppercase text-white mx-8 flex items-center">
-            {item} <span className="ml-8 text-papaya">★</span>
-          </span>
-        ))}
+        {/* Дублируем контент для бесшовности */}
+        <div className="flex flex-nowrap">
+          {children}
+          {children}
+        </div>
+        <div className="flex flex-nowrap">
+          {children}
+          {children}
+        </div>
       </motion.div>
     </div>
   );
