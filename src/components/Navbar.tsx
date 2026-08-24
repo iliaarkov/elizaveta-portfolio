@@ -14,30 +14,30 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-4xl">
-      <div className="bg-white/70 backdrop-blur-md border-2 border-white rounded-full px-6 py-3 flex items-center justify-between shadow-xl">
-        <Link href="/" className="text-xl font-bold text-papaya tracking-tighter">
+      <div className="bg-phthalo/60 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+        <Link href="/" className="text-xl font-black text-white tracking-tighter hover:text-phlox transition-colors">
           ELIZAVETA.S
         </Link>
         
-        <div className="flex items-center gap-6">
-          <div className="hidden md:flex gap-6 font-medium text-slate-600">
-            <a href="#projects" className="hover:text-coral transition-colors">{t.projects}</a>
-            <a href="#about" className="hover:text-coral transition-colors">{t.about}</a>
-            <a href="#contact" className="hover:text-coral transition-colors">{t.contact}</a>
+        <div className="flex items-center gap-8">
+          <div className="hidden md:flex gap-8 font-black text-[10px] uppercase tracking-widest text-periwinkle">
+            <a href="#projects" className="hover:text-white transition-colors">{t.projects}</a>
+            <a href="#about" className="hover:text-white transition-colors">{t.about}</a>
+            <a href="#contact" className="hover:text-white transition-colors">{t.contact}</a>
           </div>
 
-          <div className="flex bg-beige rounded-full p-1 border border-slate-200">
+          <div className="flex bg-atlantis/30 rounded-full p-1 border border-white/5">
             {(['ru', 'en'] as Locale[]).map((l) => (
               <button
-								key={l}
-								onClick={() => setLang(l)}
-								className={cn(
-									"px-3 py-1 rounded-full text-xs font-bold uppercase transition-all",
-									lang === l ? "bg-phthalo text-white" : "text-atlantis"
-								)}
-							>
-								{l}
-							</button>
+                key={l}
+                onClick={() => setLang(l)}
+                className={cn(
+                  "px-3 py-1 rounded-full text-[10px] font-black uppercase transition-all",
+                  lang === l ? "bg-phlox text-phthalo shadow-lg" : "text-periwinkle hover:text-white"
+                )}
+              >
+                {l}
+              </button>
             ))}
           </div>
         </div>

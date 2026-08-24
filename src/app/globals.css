@@ -1,6 +1,6 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
-/* Подключаем твой конфиг (важно для v4) */
+/* Подключаем твой конфиг (важно для v4) *
 @config "../../tailwind.config.ts";
 
 @layer base {
@@ -26,7 +26,7 @@
 }
 
 
-/* Кастомный класс для "пузырчатых" кнопок */
+/* Кастомный класс для "пузырчатых" кнопок *
 .bubble-shadow {
   box-shadow: 0 8px 0px 0px rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease;
@@ -37,7 +37,7 @@
   box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* Стили для скроллбара в стиле Bikini Bottom */
+/* Стили для скроллбара в стиле Bikini Bottom *
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -51,4 +51,38 @@
 }
 .font-accent {
   font-family: var(--font-accent);
+} */
+
+@import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+@layer base {
+  :root {
+    /* Основной фон теперь глубокий темно-синий */
+    --background: #0E155E; 
+    --foreground: #ffffff;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    /* Тонкое свечение на фоне вместо точек */
+    background-image: radial-gradient(circle at 50% 50%, #206abc10 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .font-accent {
+    font-family: var(--font-accent), cursive;
+  }
+  
+  .bubble-shadow {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7997E6;
+  border: 2px solid #0E155E;
 }

@@ -21,20 +21,14 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <section className="relative pt-52 pb-20 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
-        {/* Декоративные элементы (Flower Clouds) в новой палитре Phlox/Periwinkle */}
+        {/* Jellyfish Clouds */}
         <motion.div 
-          animate={{ 
-            scale: [1, 1.1, 1],
-            rotate: [0, 5, 0] 
-          }}
+          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
           transition={{ duration: 12, repeat: Infinity }}
           className="absolute top-20 -left-10 w-64 h-64 bg-phlox/30 rounded-full blur-3xl -z-10" 
         />
         <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, -10, 0] 
-          }}
+          animate={{ scale: [1, 1.2, 1], rotate: [0, -10, 0] }}
           transition={{ duration: 10, repeat: Infinity, delay: 1 }}
           className="absolute bottom-20 -right-10 w-80 h-80 bg-periwinkle/30 rounded-full blur-3xl -z-10" 
         />
@@ -63,7 +57,6 @@ export default function Home() {
           </a>
         </Reveal>
 
-        {/* Фото Лизы в органической форме */}
         <Reveal delay={0.8} overflowVisible={true}>
           <div className="mt-20 w-64 h-64 md:w-80 md:h-80 bg-phlox rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] border-8 border-white shadow-2xl animate-float relative z-0">
             <img 
@@ -75,7 +68,6 @@ export default function Home() {
         </Reveal>
       </section>
 
-      {/* MARQUEE SKILLS (используем Atlantis для фона) */}
       <div className="my-16">
         <Marquee items={t.skills} />
       </div>
@@ -94,12 +86,10 @@ export default function Home() {
             </div>
           </Reveal>
 
-          {/* GRID: Теперь без фильтров, 4 проекта в сетке */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-16">
             {projects.map((project, index) => (
               <Reveal key={project.id} delay={index * 0.15} width="100%" overflowVisible={true}>
-                {/* Оборачиваем карточку в Link для перехода на страницу кейса */}
-                <Link href={`/projects/${project.id}`} className="block">
+                <Link href={`/projects/${project.id}`} className="block h-full">
                   <ProjectCard project={project} lang={lang} />
                 </Link>
               </Reveal>
@@ -108,10 +98,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTACT SECTION */}
       <ContactSection lang={lang} />
 
-      {/* FOOTER */}
       <footer className="py-16 bg-phthalo text-center border-t border-atlantis/20">
         <div className="max-w-7xl mx-auto px-6">
           <p className="text-periwinkle font-black uppercase tracking-[0.5em] text-[10px] md:text-xs">
