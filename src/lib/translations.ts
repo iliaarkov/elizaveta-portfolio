@@ -18,6 +18,7 @@ export const translations = {
     contact: {
       title: "Давай",
       titleAccent: "нырнём",
+			title2: "!",
       subtitle: "Готовы создать контент, который взорвет охваты? Пишите прямо сейчас!",
       namePlaceholder: "Ваше имя",
       contactPlaceholder: "@telegram или почта",
@@ -46,6 +47,7 @@ export const translations = {
     contact: {
       title: "Let's",
       titleAccent: "Dive",
+			title2: "IN!",
       subtitle: "Ready to create content that blows up? Message me right now!",
       namePlaceholder: "Your name",
       contactPlaceholder: "@telegram or email",

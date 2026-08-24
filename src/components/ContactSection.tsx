@@ -40,7 +40,7 @@ export const ContactSection = ({ lang }: { lang: Locale }) => {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
         <div className="text-left">
           <h2 className="text-6xl md:text-8xl font-black uppercase mb-8 leading-[0.8]">
-            {t.title} <span className="text-phlox font-accent normal-case lowercase block md:inline text-7xl md:text-9xl">{t.titleAccent}</span> In!
+            {t.title} <span className="text-phlox font-accent normal-case lowercase block md:inline text-7xl md:text-9xl">{t.titleAccent}</span> {t.title2}
           </h2>
           <p className="text-xl text-periwinkle mb-10 font-medium">{t.subtitle}</p>
           
