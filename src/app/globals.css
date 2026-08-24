@@ -1,16 +1,37 @@
+@import "tailwindcss";
+
 @theme {
+  /* Цвета из ТЗ */
   --color-phthalo: #0E155E;
   --color-atlantis: #206ABC;
   --color-periwinkle: #7997E6;
   --color-phlox: #CAA9F3;
   --color-coral: #F28983;
-  
+
+  /* Шрифты */
   --font-manrope: "Manrope", sans-serif;
   --font-playfair: "Playfair Display", serif;
+  
+  /* Анимации */
+  --animate-marquee: marquee 25s linear infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
 }
 
-body {
-  background-color: var(--color-phthalo);
-  color: var(--color-periwinkle);
-  font-family: var(--font-manrope);
+/* Базовые стили */
+@layer base {
+  body {
+    @apply bg-phthalo text-periwinkle antialiased;
+    font-family: var(--font-manrope);
+  }
+
+  h1, h2, h3, h4, .font-playfair {
+    font-family: var(--font-playfair);
+  }
 }
+
+/* Утилита cn для Shadcn/стандартных компонентов (если используешь) */
+@custom-variant hover (&:hover);

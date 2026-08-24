@@ -1,61 +1,32 @@
-// import type { Metadata } from "next";
-// import { Fredoka } from "next/font/google";
-// import "./globals.css";
-
-// const fredoka = Fredoka({ 
-//   subsets: ["latin"], // Убрали cyrillic
-//   weight: ["300", "400", "500", "600", "700"],
-//   display: 'swap',
-// });
-
-// export const metadata: Metadata = {
-//   title: "Elizaveta Samokhovets | Content Producer",
-//   description: "SMM, UGC Creator, and Visual Identity Expert",
-// };
-
-// export default function RootLayout({
-//   children,
-// }: Readonly<{
-//   children: React.ReactNode;
-// }>) {
-//   return (
-//     <html lang="ru">
-//       <body className={`${fredoka.className} bg-beige text-slate-900 antialiased overflow-x-hidden`}>
-//         {children}
-//       </body>
-//     </html>
-//   );
-// }
-
 import type { Metadata } from "next";
-import { Montserrat, Satisfy } from "next/font/google"; 
+import { Manrope, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({ 
+const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: '--font-montserrat',
+  variable: "--font-manrope",
+  weight: ["400", "500", "700", "800"],
 });
 
-const satisfy = Satisfy({ 
-  subsets: ["latin"],
-  weight: ["400"],
-  variable: '--font-accent',
+const playfair = Playfair_Display({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-playfair",
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Elizaveta Samokhovets | Content Producer",
-  description: "SMM, UGC Creator, and Visual Identity Expert",
+  title: "Elizaveta Samokhovets | Portfolio",
+  description: "Social Media Specialist & Content Producer",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="ru">
-      <body className={`${montserrat.variable} ${satisfy.variable} font-sans bg-beige text-slate-900 antialiased overflow-x-hidden`}>
+    <html lang="ru" className={`${manrope.variable} ${playfair.variable}`}>
+      <body className="bg-phthalo antialiased">
         {children}
       </body>
     </html>
