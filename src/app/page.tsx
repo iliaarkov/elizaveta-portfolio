@@ -16,34 +16,28 @@ export default function Home() {
   const t = translations[lang];
 
   return (
-    <main className="relative min-h-screen bg-beige font-sans">
+    <main className="relative min-h-screen bg-phthalo overflow-hidden font-sans text-white">
       <Navbar lang={lang} setLang={setLang} />
 
-      {/* HERO SECTION */}
-      <section className="relative pt-52 pb-20 px-6 flex flex-col items-center justify-center text-center overflow-hidden">
-        {/* Jellyfish Clouds */}
+      {/* HERO SECTION — Глубокие цвета Phlox и Atlantis */}
+      <section className="relative pt-64 pb-24 px-6 flex flex-col items-center justify-center text-center">
         <motion.div 
-          animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
-          transition={{ duration: 12, repeat: Infinity }}
-          className="absolute top-20 -left-10 w-64 h-64 bg-phlox/30 rounded-full blur-3xl -z-10" 
-        />
-        <motion.div 
-          animate={{ scale: [1, 1.2, 1], rotate: [0, -10, 0] }}
-          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-          className="absolute bottom-20 -right-10 w-80 h-80 bg-periwinkle/30 rounded-full blur-3xl -z-10" 
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 15, repeat: Infinity }}
+          className="absolute top-0 left-0 w-full h-full bg-gradient-radial from-atlantis/20 to-transparent -z-10" 
         />
 
         <Reveal overflowVisible={true}>
-          <h1 className="text-5xl md:text-8xl font-black tracking-tight leading-[0.85] mb-8 uppercase text-phthalo">
+          <h1 className="text-6xl md:text-9xl font-black tracking-tighter leading-[0.8] mb-8 uppercase italic">
             {t.hero.title} <br />
-            <span className="text-coral font-accent normal-case lowercase text-7xl md:text-9xl tracking-normal">
+            <span className="text-phlox font-accent normal-case lowercase text-7xl md:text-[10rem] tracking-normal not-italic">
               {t.hero.titleAccent}
             </span>
           </h1>
         </Reveal>
 
         <Reveal delay={0.4}>
-          <p className="text-lg md:text-xl text-atlantis font-bold mb-12 max-w-xl uppercase tracking-wide">
+          <p className="text-periwinkle font-black mb-12 max-w-2xl uppercase tracking-[0.4em] text-xs md:text-sm">
             {t.hero.subtitle}
           </p>
         </Reveal>
@@ -51,45 +45,37 @@ export default function Home() {
         <Reveal delay={0.6}>
           <a 
             href="#projects"
-            className="bg-atlantis text-white px-12 py-6 rounded-full text-xl font-black uppercase shadow-xl hover:bg-verbena transition-all hover:scale-105 active:scale-95"
+            className="bg-phlox text-phthalo px-14 py-6 rounded-full text-xl font-black uppercase shadow-[0_0_50px_rgba(202,169,243,0.3)] hover:bg-white transition-all hover:scale-105 active:scale-95"
           >
             {t.hero.cta}
           </a>
         </Reveal>
 
         <Reveal delay={0.8} overflowVisible={true}>
-          <div className="mt-20 w-64 h-64 md:w-80 md:h-80 bg-phlox rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] border-8 border-white shadow-2xl animate-float relative z-0">
-            <img 
-              src="/images/me.jpg" 
-              alt="Elizaveta" 
-              className="w-full h-full object-cover rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%]"
-            />
+          <div className="mt-24 w-64 h-64 md:w-96 md:h-96 bg-atlantis/30 rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] border-4 border-phlox/50 shadow-[0_0_80px_rgba(32,106,188,0.4)] animate-float overflow-hidden">
+            <img src="/images/me.jpg" alt="Elizaveta" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all" />
           </div>
         </Reveal>
       </section>
 
-      <div className="my-16">
-        <Marquee items={t.skills} />
-      </div>
+      <Marquee items={t.skills} />
 
       {/* PROJECTS SECTION */}
-      <section id="projects" className="py-24 px-6">
-        <div className="max-w-7xl mx-auto">
+      <section id="projects" className="py-32 px-6">
+        <div className="max-w-6xl mx-auto">
           <Reveal overflowVisible={true}>
-            <div className="text-left mb-20">
-              <h2 className="text-6xl md:text-8xl font-black uppercase text-phthalo tracking-tighter">
+            <div className="text-center mb-24">
+              <h2 className="text-6xl md:text-8xl font-black uppercase text-white tracking-tighter italic">
                 {t.projects.title} <span className="text-coral">★</span>
               </h2>
-              <p className="text-atlantis font-black mt-4 uppercase tracking-[0.3em] text-sm md:text-base">
-                {t.projects.subtitle} 2023—2025
-              </p>
+              <div className="h-1 w-24 bg-phlox mx-auto mt-6 rounded-full" />
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14">
             {projects.map((project, index) => (
               <Reveal key={project.id} delay={index * 0.15} width="100%" overflowVisible={true}>
-                <Link href={`/projects/${project.id}`} className="block h-full">
+                <Link href={`/projects/${project.id}`} className="block">
                   <ProjectCard project={project} lang={lang} />
                 </Link>
               </Reveal>
