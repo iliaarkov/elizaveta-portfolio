@@ -68,6 +68,9 @@ export default function Home() {
               <h2 className="text-6xl md:text-8xl font-black uppercase text-white tracking-tighter italic">
                 {t.projects.title} <span className="text-coral">★</span>
               </h2>
+							<p className="text-atlantis font-black mt-4 uppercase tracking-[0.3em] text-sm md:text-base">
+                {t.projects.subtitle} 2022—2026
+              </p>
               <div className="h-1 w-24 bg-phlox mx-auto mt-6 rounded-full" />
             </div>
           </Reveal>
