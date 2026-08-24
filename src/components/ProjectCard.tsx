@@ -1,57 +1,95 @@
 "use client";
 
-import { Project } from "@/lib/projects";
-import { Locale, translations } from "@/lib/translations";
+import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Project } from "@/lib/projects";
 
-interface Props {
+interface ProjectCardProps {
   project: Project;
-  lang: Locale;
+  content: {
+    title: string;
+    desc: string;
+    role: string;
+  };
+  index: number;
 }
 
-export const ProjectCard = ({ project, lang }: Props) => {
-  const t = translations[lang].projects;
+export const ProjectCard = ({ project, content, index }: ProjectCardProps) => {
+  // Форматируем индекс (1 -> 01)
+  const formattedIndex = index < 10 ? `0${index}` : index;
 
   return (
-    <motion.div 
-      whileHover={{ y: -10, scale: 1.02 }}
-      className="group relative bg-phthalo/40 backdrop-blur-md rounded-[2rem] p-3 border border-atlantis/30 hover:border-phlox transition-all cursor-pointer overflow-hidden"
-    >
-      {/* Контейнер 16:9 */}
-      <div className="relative w-full aspect-video overflow-hidden rounded-[1.5rem] bg-atlantis/20">
-        <img 
-          src={project.thumbnail} 
-          alt={project.client} 
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
+    <Link href={`/projects/${project.id}`} className="group block">
+      <div className="relative flex flex-col gap-6">
         
-        {/* Оверлей при наведении */}
-        <div className="absolute inset-0 bg-gradient-to-t from-phthalo via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-           <h3 className="text-white text-xl font-black uppercase leading-tight">
-             {project.title[lang]}
-           </h3>
+        {/* IMAGE / VISUAL CONTAINER (16:9) */}
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-atlantis/20 bg-atlantis/5">
+          {/* Overlay for hover effect */}
+          <div className="absolute inset-0 z-10 bg-phthalo/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          
+          {/* Placeholder or Image Animation */}
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-atlantis/20 via-transparent to-phlox/10"
+          >
+            <span className="font-playfair text-9xl font-black text-atlantis/10 pointer-events-none">
+              {formattedIndex}
+            </span>
+          </motion.div>
+
+          {/* Floating Tag (Year) */}
+          <div className="absolute top-4 right-4 z-20">
+            <span className="bg-phthalo/80 backdrop-blur-md text-coral text-[10px] font-bold px-3 py-1 rounded-full border border-coral/30 tracking-widest">
+              {project.year}
+            </span>
+          </div>
+
+          {/* Icon Link effect */}
+          <div className="absolute bottom-6 right-6 z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+            <div className="bg-phlox p-3 rounded-full text-phthalo shadow-xl">
+              <ArrowUpRight size={24} />
+            </div>
+          </div>
         </div>
 
-        {/* Метрика */}
-        {project.metrics && (
-           <div className="absolute top-4 right-4 bg-coral text-white text-[10px] font-black px-4 py-2 rounded-full shadow-xl">
-             {project.metrics}
-           </div>
-        )}
-      </div>
+        {/* INFO CONTAINER */}
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center gap-4">
+            <span className="text-coral font-bold text-sm tracking-tighter">
+              {formattedIndex}
+            </span>
+            <div className="h-[1px] w-8 bg-atlantis/30" />
+            <div className="flex gap-2">
+              {project.tags.slice(0, 2).map((tag) => (
+                <span key={tag} className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
 
-      {/* Информация под картинкой */}
-      <div className="mt-4 px-3 py-2 flex justify-between items-center">
-        <div className="text-left">
-          <p className="text-[10px] font-black text-periwinkle uppercase tracking-widest mb-1">{t.client}</p>
-          <h4 className="text-lg font-black text-white uppercase truncate max-w-[200px]">{project.client}</h4>
-        </div>
-        <div className="bg-atlantis p-3 rounded-full group-hover:bg-phlox transition-colors">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14m-7-7 7 7-7 7"/>
-          </svg>
+          <h3 className="font-playfair text-3xl md:text-4xl text-phlox group-hover:text-periwinkle transition-colors duration-300">
+            {content.title}
+          </h3>
+
+          <p className="text-periwinkle/70 line-clamp-2 text-sm leading-relaxed max-w-md">
+            {content.desc}
+          </p>
+
+          <div className="mt-2 flex items-center gap-2 text-atlantis text-xs font-bold uppercase tracking-widest group-hover:text-coral transition-colors">
+            <span>View project</span>
+            <motion.span
+              animate={{ x: [0, 5, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            >
+              →
+            </motion.span>
+          </div>
         </div>
       </div>
-    </motion.div>
+    </Link>
   );
 };

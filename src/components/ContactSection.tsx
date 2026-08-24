@@ -1,90 +1,176 @@
 "use client";
 
-import { useState } from "react";
-import { Locale, translations } from "@/lib/translations";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { translations } from "@/lib/translations";
+import { Send, CheckCircle2, Loader2 } from "lucide-react";
 
-export const ContactSection = ({ lang }: { lang: Locale }) => {
+interface ContactSectionProps {
+  lang: "ru" | "en";
+}
+
+type FormStatus = "idle" | "sending" | "success" | "error";
+
+export const ContactSection = ({ lang }: ContactSectionProps) => {
   const t = translations[lang].contact;
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
-  
-  // Состояния для полей, которые нужно сохранить
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
-  const [message, setMessage] = useState("");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<FormStatus>("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
+    setStatus("sending");
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, contact, message }),
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
-      if (res.ok) {
-        setStatus('success');
-        setMessage(""); // Очищаем только сообщение
-        setTimeout(() => setStatus('idle'), 3000); // Возвращаем кнопку через 3 сек
+      if (response.ok) {
+        setStatus("success");
+        
+        // Логика: через 4 секунды стираем только сообщение
+        setTimeout(() => {
+          setFormData((prev) => ({ ...prev, message: "" }));
+          setStatus("idle");
+        }, 4000);
       } else {
-        setStatus('idle');
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 3000);
       }
-    } catch (e) {
-      setStatus('idle');
+    } catch (error) {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
     }
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-phthalo text-white rounded-t-[5rem] shadow-2xl">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
-        <div className="text-left">
-          <h2 className="text-6xl md:text-8xl font-black uppercase mb-8 leading-[0.8]">
-            {t.title} <span className="text-phlox font-accent normal-case lowercase block md:inline text-7xl md:text-9xl">{t.titleAccent}</span> {t.title2}
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-[2rem] border border-atlantis/20 bg-atlantis/5 backdrop-blur-sm p-8 md:p-12">
+      {/* Декоративный элемент на фоне (Jellyfish style) */}
+      <div className="absolute -top-24 -right-24 w-64 h-64 bg-phlox/10 blur-[80px] rounded-full pointer-events-none" />
+      
+      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12">
+        {/* Левая часть: Заголовок */}
+        <div>
+          <h2 className="font-playfair text-5xl md:text-6xl text-phlox mb-6 leading-tight">
+            {t.title}
           </h2>
-          <p className="text-xl text-periwinkle mb-10 font-medium">{t.subtitle}</p>
+          <p className="font-manrope text-periwinkle/60 text-lg leading-relaxed">
+            {lang === "ru" 
+              ? "Есть идея для проекта или предложения о сотрудничестве? Напиши мне, и я отвечу в ближайшее время."
+              : "Have a project idea or a collaboration proposal? Drop me a message, and I'll get back to you soon."}
+          </p>
           
-          <div className="flex gap-4">
-            <a href="#" className="bg-atlantis p-5 rounded-full hover:bg-periwinkle transition-all shadow-lg hover:-translate-y-2">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-            </a>
-            <a href="#" className="bg-atlantis p-5 rounded-full hover:bg-periwinkle transition-all shadow-lg hover:-translate-y-2">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-            </a>
+          <div className="mt-12 space-y-4">
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold mb-1">Email</span>
+              <span className="text-phlox font-medium">hello@samokhovets.com</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold mb-1">Socials</span>
+              <span className="text-phlox font-medium">Telegram · Instagram · LinkedIn</span>
+            </div>
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input 
-            value={name} 
-            onChange={(e) => setName(e.target.value)}
-            required 
-            placeholder={t.namePlaceholder} 
-            className="w-full p-6 rounded-[2rem] bg-atlantis/30 border-2 border-atlantis focus:border-phlox outline-none font-bold placeholder:text-periwinkle/50 text-white" 
-          />
-          <input 
-            value={contact}
-            onChange={(e) => setContact(e.target.value)}
-            required 
-            placeholder={t.contactPlaceholder} 
-            className="w-full p-6 rounded-[2rem] bg-atlantis/30 border-2 border-atlantis focus:border-phlox outline-none font-bold placeholder:text-periwinkle/50 text-white" 
-          />
-          <textarea 
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={4} 
-            placeholder={t.messagePlaceholder} 
-            className="w-full p-6 rounded-[3rem] bg-atlantis/30 border-2 border-atlantis focus:border-phlox outline-none font-bold placeholder:text-periwinkle/50 text-white"
-          ></textarea>
-          <button 
-            type="submit" 
-            disabled={status !== 'idle'}
-            className="w-full bg-phlox text-phthalo p-6 rounded-full font-black text-xl uppercase shadow-[0_10px_0_0_#B37AD4] active:translate-y-[5px] active:shadow-[0_5px_0_0_#B37AD4] transition-all disabled:opacity-50"
+        {/* Правая часть: Форма */}
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <div className="space-y-2">
+            <label className="text-[10px] uppercase tracking-widest text-atlantis font-black ml-1">{t.name}</label>
+            <input
+              required
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="w-full bg-phthalo/50 border border-atlantis/30 rounded-xl px-4 py-3 text-periwinkle focus:border-phlox focus:outline-none transition-colors placeholder:opacity-20"
+              placeholder="Elizaveta"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] uppercase tracking-widest text-atlantis font-black ml-1">{t.info}</label>
+            <input
+              required
+              type="text"
+              value={formData.contact}
+              onChange={(e) => setFormData({ ...formData, contact: e.target.value })}
+              className="w-full bg-phthalo/50 border border-atlantis/30 rounded-xl px-4 py-3 text-periwinkle focus:border-phlox focus:outline-none transition-colors placeholder:opacity-20"
+              placeholder="@username / email"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label className="text-[10px] uppercase tracking-widest text-atlantis font-black ml-1">{t.message}</label>
+            <textarea
+              required
+              rows={4}
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="w-full bg-phthalo/50 border border-atlantis/30 rounded-xl px-4 py-3 text-periwinkle focus:border-phlox focus:outline-none transition-colors resize-none placeholder:opacity-20"
+              placeholder="..."
+            />
+          </div>
+
+          <button
+            disabled={status === "sending" || status === "success"}
+            className={`mt-4 relative overflow-hidden group py-4 rounded-xl font-bold uppercase tracking-widest text-sm transition-all duration-500 ${
+              status === "success" 
+                ? "bg-coral text-phthalo" 
+                : "bg-phlox text-phthalo hover:shadow-[0_0_20px_rgba(202,169,243,0.3)] hover:scale-[1.02]"
+            }`}
           >
-            {status === 'loading' ? t.loading : status === 'success' ? t.success : t.submit}
+            <AnimatePresence mode="wait">
+              {status === "idle" && (
+                <motion.div
+                  key="idle"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="flex items-center justify-center gap-2"
+                >
+                  {t.send} <Send size={16} />
+                </motion.div>
+              )}
+
+              {status === "sending" && (
+                <motion.div
+                  key="sending"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="flex items-center justify-center gap-2"
+                >
+                  <Loader2 size={16} className="animate-spin" />
+                </motion.div>
+              )}
+
+              {status === "success" && (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex items-center justify-center gap-2"
+                >
+                  {t.success} <CheckCircle2 size={16} />
+                </motion.div>
+              )}
+
+              {status === "error" && (
+                <motion.div key="error" className="text-xs">
+                  Error. Try again.
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </form>
       </div>
-    </section>
+    </div>
   );
 };

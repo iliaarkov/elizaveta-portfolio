@@ -1,62 +1,104 @@
-export type Locale = 'ru' | 'en';
-
 export const translations = {
-  ru: {
-    nav: { projects: "Кейсы", about: "Обо мне", contact: "Связаться" },
-    hero: {
-      title: "Создаю контент, который",
-      titleAccent: "влюбляет",
-      subtitle: "СММ • UGC Креатор • Контент Продюсер",
-      cta: "Погрузиться в проекты"
-    },
-    projects: {
-      title: "КЕЙСЫ",
-      subtitle: "Выбранные работы за",
-      all: "Все", smm: "СММ", ugc: "UGC", production: "Продакшн", music: "Музыка",
-      client: "Проект", view: "Смотреть"
-    },
-    contact: {
-      title: "Давай",
-      titleAccent: "нырнём",
-			title2: "!",
-      subtitle: "Готовы создать контент, который взорвет охваты? Пишите прямо сейчас!",
-      namePlaceholder: "Ваше имя",
-      contactPlaceholder: "@telegram или почта",
-      messagePlaceholder: "О чем проект?",
-      submit: "Отправить пузырь",
-      success: "Пузырь улетел! ✅",
-      loading: "Отправка..."
-    },
-    footer: "построено на пузырях",
-    skills: ["Сценарии", "Монтаж", "Стратегия", "UGC", "Айдентика", "CapCut", "Figma"]
-  },
   en: {
-    nav: { projects: "Cases", about: "About", contact: "Contact" },
+    nav: { projects: "Projects", contact: "Contact" },
     hero: {
-      title: "Crafting content people",
-      titleAccent: "fall in love with",
-      subtitle: "SMM • UGC Creator • Content Producer",
-      cta: "Dive into projects"
+      role: "Social Media Specialist / Content Producer",
+      status: "Open to remote collaboration",
+    },
+    about: {
+      title: "Profile",
+      text: "My name is Elizaveta, I am a social media and short-form content specialist. My journey started with my own music project 'penna'. Later, I gained experience in e-commerce by founding a jewelry brand and producing content for major Russian marketplaces. I create full-cycle content — from idea and script to filming, editing, and publishing. My strength is organic growth and independent project management.",
+    },
+    skills: {
+      social: "Content strategy · Organic growth · Planning · SMM",
+      content: "Short-form · Reels · UGC · Storytelling · Scripting",
+      creative: "Visual concepts · Design · Creative direction",
+      audio: "Music production · Audio editing · Ableton Live"
     },
     projects: {
-      title: "CASES",
-      subtitle: "Selected works for",
-      all: "All", smm: "SMM", ugc: "UGC", production: "Production", music: "Music",
-      client: "Project", view: "View"
+      'ugc-ecommerce': {
+        title: "UGC / E-COMMERCE",
+        desc: "Managed multi-platform promotion (IG, TikTok, YT). Produced 60-80 videos monthly, testing formats and analyzing performance.",
+        role: "Role: SMM Specialist · UGC Creator · Producer",
+        focus: "Focus: Analytics · Strategy · High-volume Production"
+      },
+      'green-home': {
+        title: "GREEN HOME | PERSONAL BRAND",
+        desc: "Developing a personal brand for a houseplant expert. Turning knowledge into engaging content and a future digital product.",
+        role: "Role: Producer · SMM Specialist · Content Creator",
+        focus: "Focus: Expert Content · Personal Brand · Funnels"
+      },
+      'penna': {
+        title: "PENNA",
+        desc: "Personal music project. Built from scratch: content, PR, collaborations with labels and media appearances.",
+        role: "Role: Artist · Creative Producer · Music Producer",
+        focus: "Focus: Promotion · PR · Creative Direction"
+      },
+      '12sirens': {
+        title: "12SIRENS",
+        desc: "Experimental brand. Developed visual language and storytelling funnels in Telegram that converted views to sales.",
+        role: "Role: Founder · Content Strategist",
+        focus: "Focus: Brand Concept · Visual Identity · Sales Funnels"
+      }
     },
     contact: {
-      title: "Let's",
-      titleAccent: "Dive",
-			title2: "IN!",
-      subtitle: "Ready to create content that blows up? Message me right now!",
-      namePlaceholder: "Your name",
-      contactPlaceholder: "@telegram or email",
-      messagePlaceholder: "What's the project?",
-      submit: "Send bubble",
-      success: "Bubble sent! ✅",
-      loading: "Sending..."
+      title: "Let's Talk",
+      name: "Name",
+      info: "Telegram / Email",
+      message: "Message",
+      send: "Send Message",
+      success: "Sent! I'll be in touch soon."
+    }
+  },
+  ru: {
+    nav: { projects: "Проекты", contact: "Контакты" },
+    hero: {
+      role: "Social Media Specialist / Content Producer",
+      status: "Открыта к удаленному сотрудничеству",
     },
-    footer: "built with bubbles",
-    skills: ["Scripts", "Editing", "Strategy", "UGC", "Visual Identity", "CapCut", "Figma"]
+    about: {
+      title: "Обо мне",
+      text: "Меня зовут Елизавета, я специалист по социальным сетям и short-form контенту. Мой путь начался с собственного музыкального проекта penna. Позже я получила опыт в e-commerce, основав бренд украшений, а затем работала с контентом для крупнейших маркетплейсов. Я создаю контент полного цикла – от идеи и сценария до съёмки, монтажа и публикации. Моя сильная сторона – органический рост и самостоятельное ведение проектов.",
+    },
+    skills: {
+      social: "Контент-стратегия · Органический рост · SMM",
+      content: "Short-form · Reels · UGC · Сторителлинг · Сценарии",
+      creative: "Визуальные концепции · Дизайн · Creative direction",
+      audio: "Music production · Аудиомонтаж · Ableton Live"
+    },
+    projects: {
+      'ugc-ecommerce': {
+        title: "UGC / E-COMMERCE",
+        desc: "Продвижение через Instagram, TikTok и YouTube. Создание 60–80 видео в месяц, тестирование форматов и глубокая аналитика результатов.",
+        role: "Роль: SMM Specialist · UGC Creator · Продюсер",
+        focus: "Фокус: Аналитика · Стратегия · Масштабирование контента"
+      },
+      'green-home': {
+        title: "GREEN HOME | ЛИЧНЫЙ БРЕНД",
+        desc: "Развитие экспертного блога о комнатных растениях. Упаковка знаний в вовлекающий контент и создание диджитал-продукта.",
+        role: "Роль: Продюсер · SMM Specialist · Контент-мейкер",
+        focus: "Фокус: Экспертный контент · Личный бренд · Воронки"
+      },
+      'penna': {
+        title: "PENNA",
+        desc: "Собственный музыкальный проект. Полный цикл: от создания музыки до PR, работы с лейблами и ТВ-выступлений.",
+        role: "Роль: Артист · Креативный продюсер · Музыкальный продюсер",
+        focus: "Фокус: Продвижение · PR · Креативное направление"
+      },
+      '12sirens': {
+        title: "12SIRENS",
+        desc: "Экспериментальный проект. Разработка визуального языка бренда и контентных воронок в Telegram, приведших к продажам.",
+        role: "Роль: Основатель · Контент-стратег",
+        focus: "Фокус: Концепция бренда · Визуальный стиль · Продажи"
+      }
+    },
+    contact: {
+      title: "Связаться",
+      name: "Имя",
+      info: "ТГ / Почта",
+      message: "Сообщение",
+      send: "Отправить",
+      success: "Отправлено! Скоро отвечу."
+    }
   }
 };

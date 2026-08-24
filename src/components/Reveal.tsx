@@ -23,7 +23,6 @@ export const Reveal = ({ children, width = "fit-content", delay = 0.25, overflow
   }, [isInView, mainControls]);
 
   return (
-    // Убираем overflow: hidden если передан флаг overflowVisible
     <div ref={ref} style={{ position: "relative", width, overflow: overflowVisible ? "visible" : "hidden" }}>
       <motion.div
         variants={{

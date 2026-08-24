@@ -1,88 +1,16 @@
-/* @import "tailwindcss";
-
-/* Подключаем твой конфиг (важно для v4) *
-@config "../../tailwind.config.ts";
-
-@layer base {
-  :root {
-    --background: #FAF4CD;
-    --foreground: #1e293b;
-		--font-montserrat: 'Montserrat', sans-serif;
-  	--font-accent: 'Satisfy', cursive;
-  }
-
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    background-image: radial-gradient(#e1712610 1px, transparent 1px);
-    background-size: 40px 40px;
-		font-family: var(--font-montserrat), sans-serif;
-  }
-}
-@layer components {
-  .font-accent {
-    font-family: var(--font-accent), cursive;
-  }
-}
-
-
-/* Кастомный класс для "пузырчатых" кнопок *
-.bubble-shadow {
-  box-shadow: 0 8px 0px 0px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease;
-}
-
-.bubble-shadow:active {
-  transform: translateY(4px);
-  box-shadow: 0 4px 0px 0px rgba(0, 0, 0, 0.1);
-}
-
-/* Стили для скроллбара в стиле Bikini Bottom *
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  background: #FAF4CD;
-}
-::-webkit-scrollbar-thumb {
-  background: #FCC74B;
-  border-radius: 10px;
-  border: 2px solid #FAF4CD;
-}
-.font-accent {
-  font-family: var(--font-accent);
-} */
-
-@import "tailwindcss";
-@config "../../tailwind.config.ts";
-
-@layer base {
-  :root {
-    /* Основной фон теперь глубокий темно-синий */
-    --background: #0E155E; 
-    --foreground: #ffffff;
-  }
-
-  body {
-    background-color: var(--background);
-    color: var(--foreground);
-    /* Тонкое свечение на фоне вместо точек */
-    background-image: radial-gradient(circle at 50% 50%, #206abc10 0%, transparent 50%);
-    background-attachment: fixed;
-  }
-}
-
-@layer components {
-  .font-accent {
-    font-family: var(--font-accent), cursive;
-  }
+@theme {
+  --color-phthalo: #0E155E;
+  --color-atlantis: #206ABC;
+  --color-periwinkle: #7997E6;
+  --color-phlox: #CAA9F3;
+  --color-coral: #F28983;
   
-  .bubble-shadow {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
+  --font-manrope: "Manrope", sans-serif;
+  --font-playfair: "Playfair Display", serif;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #7997E6;
-  border: 2px solid #0E155E;
+body {
+  background-color: var(--color-phthalo);
+  color: var(--color-periwinkle);
+  font-family: var(--font-manrope);
 }
