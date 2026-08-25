@@ -27,13 +27,13 @@ export default function PortfolioPage() {
         <div className="flex items-center gap-8 bg-atlantis/10 px-4 py-2 rounded-full border border-atlantis/20">
           <button 
             onClick={() => setLang("en")} 
-            className={`text-xs font-bold transition-colors ${lang === "en" ? "text-coral" : "text-periwinkle/50"}`}
+            className={`text-xs font-bold transition-colors ${lang === "en" ? "text-verbena" : "text-periwinkle/50"}`}
           >
             EN
           </button>
           <button 
             onClick={() => setLang("ru")} 
-            className={`text-xs font-bold transition-colors ${lang === "ru" ? "text-coral" : "text-periwinkle/50"}`}
+            className={`text-xs font-bold transition-colors ${lang === "ru" ? "text-verbena" : "text-periwinkle/50"}`}
           >
             RU
           </button>
@@ -73,7 +73,7 @@ export default function PortfolioPage() {
 															{t.hero.role}
 													</p>
 													<br />
-													<p className="text-coral font-playfair italic text-2xl">
+													<p className="text-verbena font-playfair italic text-2xl">
 															{t.hero.status}
 													</p>
 											</div>
@@ -135,7 +135,7 @@ export default function PortfolioPage() {
             ].map((stat, i) => (
               <Reveal key={i}>
                 <div className="flex flex-col items-start">
-                  <span className="text-5xl md:text-6xl font-black text-coral mb-2 tracking-tighter">
+                  <span className="text-5xl md:text-6xl font-black text-verbena mb-2 tracking-tighter">
                     {stat.val}
                   </span>
                   <span className="text-xs uppercase tracking-[0.2em] font-bold text-atlantis">
@@ -164,7 +164,8 @@ export default function PortfolioPage() {
           <div className="flex items-baseline justify-between mb-16 border-b border-atlantis/20 pb-8">
             <h2 className="font-playfair text-5xl md:text-7xl text-phlox">{t.projTitle}</h2>
             <br />
-						<div className="font-manrope text-sm text-coral uppercase tracking-widest hidden md:block">
+            <br />
+						<div className="font-manrope text-sm text-verbena uppercase tracking-widest hidden md:block">
               {projects.length} {t.projCases}
             </div>
           </div>

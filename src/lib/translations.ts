@@ -9,7 +9,7 @@ export const translations = {
     },
     about: {
       title: "Profile",
-      text: "My name is Elizaveta, I am a social media and short-form content specialist. My journey started with my own music project 'penna'. Later, I gained experience in e-commerce by founding a jewelry brand and producing content for major Russian marketplaces. I create full-cycle content — from idea and script to filming, editing, and publishing. My strength is organic growth and independent project management.",
+      text: "My name is Elizaveta, I am a social media and short-form content specialist. My journey started with my own music project 'penna'. Later, I gained experience in e-commerce by founding a jewelry brand and producing content for one of the largest marketplaces. I create full-cycle content — from idea and script to filming, editing, and publishing. My strength is organic growth and independent project management.",
     },
     skills: {
       social: "Content strategy · Organic growth · Planning · SMM",
@@ -64,7 +64,7 @@ export const translations = {
     },
     about: {
       title: "Обо мне",
-      text: "Меня зовут Елизавета, я специалист по социальным сетям и short-form контенту. Мой путь начался с собственного музыкального проекта penna. Позже я получила опыт в e-commerce, основав бренд украшений, а затем работала с контентом для крупнейших маркетплейсов. Я создаю контент полного цикла – от идеи и сценария до съёмки, монтажа и публикации. Моя сильная сторона – органический рост и самостоятельное ведение проектов.",
+      text: "Меня зовут Елизавета, я специалист по социальным сетям и short-form контенту. Мой путь начался с собственного музыкального проекта penna. Позже я получила опыт в e-commerce, основав бренд украшений, а затем работала с контентом для одного из крупнейших маркетплейсов. Я создаю контент полного цикла – от идеи и сценария до съёмки, монтажа и публикации. Моя сильная сторона – органический рост и самостоятельное ведение проектов.",
     },
     skills: {
       social: "Контент-стратегия · Органический рост · SMM",
@@ -73,7 +73,7 @@ export const translations = {
       audio: "Music production · Аудиомонтаж · Ableton Live"
     },
 		projTitle: "Избранные проекты",
-		projCases: "Кейсы – 2022-2026",
+		projCases: "Кейса – 2022-2026",
     projects: {
       'ugc-ecommerce': {
         title: "UGC / E-COMMERCE",
