@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Цвета из ТЗ */
   --color-phthalo: #0E155E;
   --color-atlantis: #206ABC;
   --color-periwinkle: #7997E6;
@@ -14,10 +13,20 @@
   
   /* Анимации */
   --animate-marquee: marquee 25s linear infinite;
+	--animate-float: float 6s ease-in-out infinite;
+  --animate-wobble: wobble 10s ease-in-out infinite;
 
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
+  }
+	@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes wobble {
+    0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+    50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
   }
 }
 
@@ -33,5 +42,10 @@
   }
 }
 
-/* Утилита cn для Shadcn/стандартных компонентов (если используешь) */
+/* Утилита cn для Shadcn/стандартных компонентов */
 @custom-variant hover (&:hover);
+
+/* Форма цветка для фото */
+.flower-mask {
+  clip-path: url(#flower-path);
+}

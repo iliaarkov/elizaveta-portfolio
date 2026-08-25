@@ -8,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContactSection } from "@/components/ContactSection";
 import { Marquee } from "@/components/Marquee";
+import { BikiniFlower } from "@/components/BikiniFlower";
 
 export default function PortfolioPage() {
   // В реальном приложении это может приходить из Context или URL /ru или /en
@@ -20,7 +21,7 @@ export default function PortfolioPage() {
       {/* FIXED NAVBAR */}
       <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-6 py-8 backdrop-blur-sm">
         <div className="font-playfair text-xl font-black tracking-tighter text-phlox">
-          ES.
+          Elizaveta S.
         </div>
         <div className="flex items-center gap-8 bg-atlantis/10 px-4 py-2 rounded-full border border-atlantis/20">
           <button 
@@ -39,40 +40,64 @@ export default function PortfolioPage() {
       </nav>
 
       {/* HERO SECTION WITH JELLYFISH BACKGROUND */}
-      <section className="relative h-screen flex flex-col justify-center items-center px-6 overflow-hidden">
-        {/* Анимированные медузы/облака на фоне */}
-        <div className="absolute inset-0 z-0">
-          <motion.div 
-            animate={{ y: [0, -20, 0], opacity: [0.3, 0.5, 0.3] }}
-            transition={{ duration: 8, repeat: Infinity }}
-            className="absolute top-[20%] left-[10%] w-64 h-64 bg-atlantis blur-[120px] rounded-full" 
-          />
-          <motion.div 
-            animate={{ y: [0, 30, 0], opacity: [0.2, 0.4, 0.2] }}
-            transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-            className="absolute bottom-[20%] right-[5%] w-96 h-96 bg-phlox blur-[150px] rounded-full" 
-          />
-        </div>
+      <section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
+				
+				{/* Декоративные цветы на фоне */}
+				<BikiniFlower className="absolute top-20 left-[10%] text-coral/20" size={150} />
+				<BikiniFlower className="absolute bottom-20 right-[15%] text-phlox/20" size={200} />
+				
+				<div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+					
+					{/* ЛЕВАЯ ЧАСТЬ: ТЕКСТ */}
+					<div className="relative z-10 order-2 lg:order-1 text-left">
+						<Reveal>
+							<h1 className="font-playfair text-6xl md:text-8xl text-phlox leading-[0.9] mb-6">
+								Elizaveta <br /> Samokhovets
+							</h1>
+						</Reveal>
+						<Reveal>
+							<div className="space-y-4">
+								<p className="text-xl md:text-2xl font-light tracking-widest uppercase text-periwinkle/80">
+									{t.hero.role}
+								</p>
+								<p className="text-coral font-playfair italic text-2xl">
+									{t.hero.status}
+								</p>
+							</div>
+						</Reveal>
+					</div>
 
-        <div className="relative z-10 text-center">
-          <Reveal>
-            <h1 className="font-playfair text-6xl md:text-8xl lg:text-9xl mb-4 text-phlox tracking-tighter uppercase leading-none">
-              Elizaveta <br /> Samokhovets
-            </h1>
-          </Reveal>
-          <Reveal>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-6">
-              <p className="text-lg md:text-xl font-light tracking-widest uppercase">
-                {t.hero.role}
-              </p>
-              <span className="hidden md:block text-coral">•</span>
-              <p className="text-coral font-medium italic">
-                {t.hero.status}
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+					{/* ПРАВАЯ ЧАСТЬ: ФОТО В ЦВЕТКЕ */}
+					<div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+						<Reveal>
+							<div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
+								{/* Фон-цветок за фото */}
+								<div className="absolute inset-0 bg-atlantis/20 animate-wobble" />
+								
+								{/* Само фото */}
+								<div 
+									className="absolute inset-4 overflow-hidden animate-wobble shadow-2xl border-4 border-phlox/30"
+									style={{ 
+										backgroundImage: 'url(/images/me.jpg)',
+										backgroundSize: 'cover',
+										backgroundPosition: 'center'
+									}}
+								>
+									{/* Оверлей */}
+									<div className="absolute inset-0 bg-phthalo/10 mix-blend-overlay" />
+								</div>
+
+								{/* Летающие пузырьки вокруг фото */}
+								<motion.div 
+									animate={{ y: [0, -40, 0], x: [0, 20, 0] }}
+									transition={{ duration: 4, repeat: Infinity }}
+									className="absolute -top-4 -right-4 w-12 h-12 bg-white/20 rounded-full blur-sm"
+								/>
+							</div>
+						</Reveal>
+					</div>
+				</div>
+			</section>
 
       {/* ABOUT / PROFILE */}
       <section className="py-24 px-6 max-w-6xl mx-auto">
@@ -135,7 +160,7 @@ export default function PortfolioPage() {
           <div className="flex items-baseline justify-between mb-16 border-b border-atlantis/20 pb-8">
             <h2 className="font-playfair text-5xl md:text-7xl text-phlox">Selected Projects</h2>
             <span className="font-manrope text-sm text-coral uppercase tracking-widest hidden md:block">
-              {projects.length} Cases — 2021/2024
+              {projects.length} <br />Cases — 2022/2026
             </span>
           </div>
         </Reveal>
