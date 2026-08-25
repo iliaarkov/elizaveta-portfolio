@@ -39,74 +39,87 @@ export default function PortfolioPage() {
         </div>
       </nav>
 
-      {/* HERO SECTION WITH JELLYFISH BACKGROUND */}
-      <section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
-				
-				{/* Декоративные цветы на фоне */}
-				<BikiniFlower fillColor="#F28983" strokeColor="#CAA9F3" size={120} />
-				<BikiniFlower fillColor="#CAA9F3" strokeColor="#7997E6" size={180} />
-				
-				<div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+			{/* HERO SECTION WITH JELLYFISH BACKGROUND */}
+			<section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
 					
-					{/* ЛЕВАЯ ЧАСТЬ: ТЕКСТ */}
-					<div className="relative z-10 order-2 lg:order-1 text-left">
-						<Reveal>
-							<h1 className="font-playfair text-6xl md:text-8xl text-phlox leading-[0.9] mb-6">
-								{t.hero.name} <br /> {t.hero.surname}
-							</h1>
-						</Reveal>
-						<Reveal>
-							<div className="space-y-4">
-								<p className="text-xl md:text-2xl font-light tracking-widest uppercase text-periwinkle/80">
-									{t.hero.role}
-								</p><br />
-								<p className="text-coral font-playfair italic text-2xl">
-									{t.hero.status}
-								</p>
-							</div>
-						</Reveal>
+					{/* Цветок 1: Сверху слева */}
+					<div className="absolute top-[10%] left-[5%] z-0 opacity-60 lg:opacity-100">
+							<BikiniFlower 
+									fillColor="#F28983" 
+									strokeColor="#CAA9F3" 
+									centerColor="#FFFFFF"
+									size={120} 
+									duration={15} // Чуть быстрее вращение
+							/>
 					</div>
 
-					{/* ПРАВАЯ ЧАСТЬ: ФОТО В ЦВЕТКЕ */}
-					<div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-						<Reveal>
-							<div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
-								{/* Фон-цветок за фото */}
-								<div 
-									className="absolute inset-0 animate-wobble overflow-hidden border-[6px] border-phlox/40 shadow-2xl"
-									style={{ isolation: 'isolate' }} // Изолируем слои, чтобы не было артефактов
-								>
-								
-								{/* Само фото */}
-								<div 
-									className="w-full h-full scale-110" // scale-110 гарантирует отсутствие пустых углов
-									style={{ 
-										backgroundImage: 'url(/images/me.jpg)',
-										backgroundSize: 'cover',
-										backgroundPosition: 'center',
-									}}
-								/>
-									{/* Оверлей */}
-									<div className="absolute inset-0 bg-gradient-to-t from-phthalo/40 to-transparent" />
-								</div>
-
-								{/* Летающие пузырьки вокруг фото */}
-								<motion.div 
-									animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
-									transition={{ duration: 3, repeat: Infinity }}
-									className="absolute -top-6 -left-6 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 z-20"
-								/>
-								<motion.div 
-									animate={{ y: [0, 30, 0], scale: [1, 1.2, 1] }}
-									transition={{ duration: 5, repeat: Infinity, delay: 1 }}
-									className="absolute bottom-10 -right-8 w-12 h-12 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 z-20"
-								/>
-							</div>
-						</Reveal>
+					{/* Цветок 2: Снизу справа (за фотографией или рядом) */}
+					<div className="absolute bottom-[10%] right-[5%] z-0 opacity-40 lg:opacity-80">
+							<BikiniFlower 
+									fillColor="#CAA9F3" 
+									strokeColor="#7997E6" 
+									centerColor="#F28983"
+									size={220} 
+									duration={25} // Медленное вращение
+							/>
 					</div>
-				</div>
+
+					{/* Цветок 3 (опционально для баланса): Сверху справа */}
+					<div className="absolute top-[15%] right-[15%] z-0 opacity-20 hidden lg:block">
+							<BikiniFlower 
+									fillColor="#7997E6" 
+									strokeColor="#CAA9F3" 
+									centerColor="#FFFFFF"
+									size={80} 
+									duration={30}
+							/>
+					</div>
+					
+					<div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+							
+							{/* ЛЕВАЯ ЧАСТЬ: ТЕКСТ */}
+							<div className="relative z-10 order-2 lg:order-1 text-left">
+									<Reveal>
+											<h1 className="font-playfair text-6xl md:text-8xl text-phlox leading-[0.9] mb-6">
+													{t.hero.name} <br /> {t.hero.surname}
+											</h1>
+									</Reveal>
+									<Reveal>
+											<div className="space-y-4">
+													<p className="text-xl md:text-2xl font-light tracking-widest uppercase text-periwinkle/80">
+															{t.hero.role}
+													</p>
+													<br />
+													<p className="text-coral font-playfair italic text-2xl">
+															{t.hero.status}
+													</p>
+											</div>
+									</Reveal>
+							</div>
+
+							{/* ПРАВАЯ ЧАСТЬ: ФОТО В ЦВЕТКЕ */}
+							<div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+									<Reveal>
+											<div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
+													<div 
+															className="absolute inset-0 animate-wobble overflow-hidden border-[6px] border-phlox/40 shadow-2xl shadow-phthalo/50"
+															style={{ isolation: 'isolate' }}
+													>
+															<div 
+																	className="w-full h-full scale-110"
+																	style={{ 
+																			backgroundImage: 'url(/images/me.jpg)',
+																			backgroundSize: 'cover',
+																			backgroundPosition: 'center',
+																	}}
+															/>
+															<div className="absolute inset-0 bg-gradient-to-t from-phthalo/40 to-transparent" />
+													</div>
+											</div>
+									</Reveal>
+							</div>
+					</div>
 			</section>
-
       {/* ABOUT / PROFILE */}
       <section className="py-24 px-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
