@@ -43,8 +43,8 @@ export default function PortfolioPage() {
       <section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
 				
 				{/* Декоративные цветы на фоне */}
-				<BikiniFlower className="absolute top-20 left-[10%] text-coral/20" size={150} />
-				<BikiniFlower className="absolute bottom-20 right-[15%] text-phlox/20" size={200} />
+				<BikiniFlower fillColor="#F28983" strokeColor="#CAA9F3" size={120} />
+				<BikiniFlower fillColor="#CAA9F3" strokeColor="#7997E6" size={180} />
 				
 				<div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 					
@@ -70,25 +70,28 @@ export default function PortfolioPage() {
 					{/* ПРАВАЯ ЧАСТЬ: ФОТО В ЦВЕТКЕ */}
 					<div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
 						<Reveal>
-							<div className="relative w-72 h-72 md:w-[450px] md:h-[450px] isolate">
+							<div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
 								{/* Фон-цветок за фото */}
-								<div className="absolute inset-0 bg-phlox/20 animate-wobble blur-xl" />
+								<div 
+									className="absolute inset-0 animate-wobble overflow-hidden border-[6px] border-phlox/40 shadow-2xl"
+									style={{ isolation: 'isolate' }} // Изолируем слои, чтобы не было артефактов
+								>
 								
 								{/* Само фото */}
 								<div 
-									className="absolute inset-0 z-10 animate-wobble overflow-hidden border-[6px] border-phlox/40 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
+									className="w-full h-full scale-110" // scale-110 гарантирует отсутствие пустых углов
 									style={{ 
 										backgroundImage: 'url(/images/me.jpg)',
 										backgroundSize: 'cover',
-										backgroundPosition: 'center'
+										backgroundPosition: 'center',
 									}}
-								>
+								/>
 									{/* Оверлей */}
 									<div className="absolute inset-0 bg-gradient-to-t from-phthalo/40 to-transparent" />
 								</div>
 
 								{/* Летающие пузырьки вокруг фото */}
-								<motion.div 
+								{/* <motion.div 
 									animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
 									transition={{ duration: 3, repeat: Infinity }}
 									className="absolute -top-6 -left-6 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 z-20"
@@ -97,7 +100,7 @@ export default function PortfolioPage() {
 									animate={{ y: [0, 30, 0], scale: [1, 1.2, 1] }}
 									transition={{ duration: 5, repeat: Infinity, delay: 1 }}
 									className="absolute bottom-10 -right-8 w-12 h-12 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 z-20"
-								/>
+								/> */}
 							</div>
 						</Reveal>
 					</div>
@@ -165,9 +168,9 @@ export default function PortfolioPage() {
           <div className="flex items-baseline justify-between mb-16 border-b border-atlantis/20 pb-8">
             <h2 className="font-playfair text-5xl md:text-7xl text-phlox">{t.projTitle}</h2>
             <br />
-						<span className="font-manrope text-sm text-coral uppercase tracking-widest hidden md:block">
+						<div className="font-manrope text-sm text-coral uppercase tracking-widest hidden md:block">
               {projects.length} {t.projCases}
-            </span>
+            </div>
           </div>
         </Reveal>
 
