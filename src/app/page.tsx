@@ -9,6 +9,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { ContactSection } from "@/components/ContactSection";
 import { Marquee } from "@/components/Marquee";
 import { BikiniFlower } from "@/components/BikiniFlower";
+import { Bubble } from "@/components/Bubble";
 
 export default function PortfolioPage() {
   // В реальном приложении это может приходить из Context или URL /ru или /en
@@ -42,38 +43,20 @@ export default function PortfolioPage() {
 			{/* HERO SECTION WITH JELLYFISH BACKGROUND */}
 			<section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
 					
-					{/* Цветок 1: Сверху слева */}
-					<div className="absolute top-[10%] left-[5%] z-0 opacity-60 lg:opacity-100">
-							<BikiniFlower 
-									fillColor="#F28983" 
-									strokeColor="#CAA9F3" 
-									centerColor="#FFFFFF"
-									size={120} 
-									duration={15} // Чуть быстрее вращение
-							/>
-					</div>
+					{/* Пузырь 1: Сверху слева */}
+    <div className="absolute top-[15%] left-[8%] z-0 animate-bubble-float">
+        <Bubble size={120} className="opacity-60" />
+    </div>
 
-					{/* Цветок 2: Снизу справа (за фотографией или рядом) */}
-					<div className="absolute bottom-[10%] right-[5%] z-0 opacity-40 lg:opacity-80">
-							<BikiniFlower 
-									fillColor="#CAA9F3" 
-									strokeColor="#7997E6" 
-									centerColor="#F28983"
-									size={220} 
-									duration={25} // Медленное вращение
-							/>
-					</div>
+    {/* Пузырь 2: Снизу справа */}
+    <div className="absolute bottom-[12%] right-[10%] z-0 animate-bubble-float" style={{ animationDelay: '2s' }}>
+        <Bubble size={240} className="opacity-40" />
+    </div>
 
-					{/* Цветок 3 (опционально для баланса): Сверху справа */}
-					<div className="absolute top-[15%] right-[15%] z-0 opacity-20 hidden lg:block">
-							<BikiniFlower 
-									fillColor="#7997E6" 
-									strokeColor="#CAA9F3" 
-									centerColor="#FFFFFF"
-									size={80} 
-									duration={30}
-							/>
-					</div>
+    {/* Пузырь 3: Мелкий для акцента */}
+    <div className="absolute top-[20%] right-[20%] z-0 animate-bubble-float" style={{ animationDelay: '4s' }}>
+        <Bubble size={60} className="opacity-30" />
+    </div>
 					
 					<div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
 							
