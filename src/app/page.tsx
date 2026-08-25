@@ -52,7 +52,7 @@ export default function PortfolioPage() {
 					<div className="relative z-10 order-2 lg:order-1 text-left">
 						<Reveal>
 							<h1 className="font-playfair text-6xl md:text-8xl text-phlox leading-[0.9] mb-6">
-								Elizaveta <br /> Samokhovets
+								{t.hero.name} <br /> {t.hero.surname}
 							</h1>
 						</Reveal>
 						<Reveal>
@@ -70,13 +70,13 @@ export default function PortfolioPage() {
 					{/* ПРАВАЯ ЧАСТЬ: ФОТО В ЦВЕТКЕ */}
 					<div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
 						<Reveal>
-							<div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
+							<div className="relative w-72 h-72 md:w-[450px] md:h-[450px] isolate">
 								{/* Фон-цветок за фото */}
-								<div className="absolute inset-0 bg-atlantis/20 animate-wobble" />
+								<div className="absolute inset-0 bg-phlox/20 animate-wobble blur-xl" />
 								
 								{/* Само фото */}
 								<div 
-									className="absolute inset-4 overflow-hidden animate-wobble shadow-2xl border-4 border-phlox/30"
+									className="absolute inset-0 z-10 animate-wobble overflow-hidden border-[6px] border-phlox/40 shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
 									style={{ 
 										backgroundImage: 'url(/images/me.jpg)',
 										backgroundSize: 'cover',
@@ -84,14 +84,19 @@ export default function PortfolioPage() {
 									}}
 								>
 									{/* Оверлей */}
-									<div className="absolute inset-0 bg-phthalo/10 mix-blend-overlay" />
+									<div className="absolute inset-0 bg-gradient-to-t from-phthalo/40 to-transparent" />
 								</div>
 
 								{/* Летающие пузырьки вокруг фото */}
 								<motion.div 
-									animate={{ y: [0, -40, 0], x: [0, 20, 0] }}
-									transition={{ duration: 4, repeat: Infinity }}
-									className="absolute -top-4 -right-4 w-12 h-12 bg-white/20 rounded-full blur-sm"
+									animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
+									transition={{ duration: 3, repeat: Infinity }}
+									className="absolute -top-6 -left-6 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 z-20"
+								/>
+								<motion.div 
+									animate={{ y: [0, 30, 0], scale: [1, 1.2, 1] }}
+									transition={{ duration: 5, repeat: Infinity, delay: 1 }}
+									className="absolute bottom-10 -right-8 w-12 h-12 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 z-20"
 								/>
 							</div>
 						</Reveal>
@@ -158,9 +163,10 @@ export default function PortfolioPage() {
       <section className="py-24 px-6 max-w-7xl mx-auto" id="projects">
         <Reveal>
           <div className="flex items-baseline justify-between mb-16 border-b border-atlantis/20 pb-8">
-            <h2 className="font-playfair text-5xl md:text-7xl text-phlox">Selected Projects</h2>
-            <span className="font-manrope text-sm text-coral uppercase tracking-widest hidden md:block">
-              {projects.length} <br />Cases — 2022/2026
+            <h2 className="font-playfair text-5xl md:text-7xl text-phlox">{t.projTitle}</h2>
+            <br />
+						<span className="font-manrope text-sm text-coral uppercase tracking-widest hidden md:block">
+              {projects.length} {t.projCases}
             </span>
           </div>
         </Reveal>

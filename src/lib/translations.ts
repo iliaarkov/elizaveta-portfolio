@@ -2,6 +2,8 @@ export const translations = {
   en: {
     nav: { projects: "Projects", contact: "Contact" },
     hero: {
+			name: "Elizaveta",
+			surname: "Samokhovets",
       role: "Social Media Specialist / Content Producer",
       status: "Open to remote collaboration",
     },
@@ -15,6 +17,8 @@ export const translations = {
       creative: "Visual concepts · Design · Creative direction",
       audio: "Music production · Audio editing · Ableton Live"
     },
+		projTitle: "Selected Projects",
+		projCases: "Cases – 2022-2026",
     projects: {
       'ugc-ecommerce': {
         title: "UGC / E-COMMERCE",
@@ -23,23 +27,23 @@ export const translations = {
         focus: "Focus: Analytics · Strategy · High-volume Production"
       },
       'green-home': {
-        title: "GREEN HOME | PERSONAL BRAND",
+        title: "Green HOME | GARDEN with Galina",
         desc: "Developing a personal brand for a houseplant expert. Turning knowledge into engaging content and a future digital product.",
         role: "Role: Producer · SMM Specialist · Content Creator",
         focus: "Focus: Expert Content · Personal Brand · Funnels"
       },
-      'penna': {
-        title: "PENNA",
-        desc: "Personal music project. Built from scratch: content, PR, collaborations with labels and media appearances.",
-        role: "Role: Artist · Creative Producer · Music Producer",
-        focus: "Focus: Promotion · PR · Creative Direction"
-      },
       '12sirens': {
-        title: "12SIRENS",
+				title: "12SIRENS",
         desc: "Experimental brand. Developed visual language and storytelling funnels in Telegram that converted views to sales.",
         role: "Role: Founder · Content Strategist",
         focus: "Focus: Brand Concept · Visual Identity · Sales Funnels"
-      }
+      },
+			'penna': {
+				title: "PENNA",
+				desc: "Personal music project. Built from scratch: content, PR, collaborations with labels and media appearances.",
+				role: "Role: Artist · Creative Producer · Music Producer",
+				focus: "Focus: Promotion · PR · Creative Direction"
+			}
     },
     contact: {
       title: "Let's Talk",
@@ -53,7 +57,9 @@ export const translations = {
   ru: {
     nav: { projects: "Проекты", contact: "Контакты" },
     hero: {
-      role: "Social Media Specialist / Content Producer",
+			name: "Елизавета",
+			surname: "Самоховец",
+      role: "Специалист по социальным сетям / Контент-продюсер",
       status: "Открыта к удаленному сотрудничеству",
     },
     about: {
@@ -66,6 +72,8 @@ export const translations = {
       creative: "Визуальные концепции · Дизайн · Creative direction",
       audio: "Music production · Аудиомонтаж · Ableton Live"
     },
+		projTitle: "Избранные проекты",
+		projCases: "Кейсы – 2022-2026",
     projects: {
       'ugc-ecommerce': {
         title: "UGC / E-COMMERCE",
@@ -74,23 +82,23 @@ export const translations = {
         focus: "Фокус: Аналитика · Стратегия · Масштабирование контента"
       },
       'green-home': {
-        title: "GREEN HOME | ЛИЧНЫЙ БРЕНД",
+        title: "Зелёный ДОМ | САД с Галиной",
         desc: "Развитие экспертного блога о комнатных растениях. Упаковка знаний в вовлекающий контент и создание диджитал-продукта.",
         role: "Роль: Продюсер · SMM Specialist · Контент-мейкер",
         focus: "Фокус: Экспертный контент · Личный бренд · Воронки"
       },
-      'penna': {
-        title: "PENNA",
-        desc: "Собственный музыкальный проект. Полный цикл: от создания музыки до PR, работы с лейблами и ТВ-выступлений.",
-        role: "Роль: Артист · Креативный продюсер · Музыкальный продюсер",
-        focus: "Фокус: Продвижение · PR · Креативное направление"
-      },
       '12sirens': {
-        title: "12SIRENS",
+				title: "12SIRENS",
         desc: "Экспериментальный проект. Разработка визуального языка бренда и контентных воронок в Telegram, приведших к продажам.",
         role: "Роль: Основатель · Контент-стратег",
         focus: "Фокус: Концепция бренда · Визуальный стиль · Продажи"
-      }
+      },
+			'penna': {
+				title: "PENNA",
+				desc: "Собственный музыкальный проект. Полный цикл: от создания музыки до PR, работы с лейблами и ТВ-выступлений.",
+				role: "Роль: Артист · Креативный продюсер · Музыкальный продюсер",
+				focus: "Фокус: Продвижение · PR · Креативное направление"
+			}
     },
     contact: {
       title: "Связаться",
