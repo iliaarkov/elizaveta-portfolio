@@ -91,7 +91,7 @@ export default function PortfolioPage() {
 								</div>
 
 								{/* Летающие пузырьки вокруг фото */}
-								{/* <motion.div 
+								<motion.div 
 									animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
 									transition={{ duration: 3, repeat: Infinity }}
 									className="absolute -top-6 -left-6 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 z-20"
@@ -100,7 +100,7 @@ export default function PortfolioPage() {
 									animate={{ y: [0, 30, 0], scale: [1, 1.2, 1] }}
 									transition={{ duration: 5, repeat: Infinity, delay: 1 }}
 									className="absolute bottom-10 -right-8 w-12 h-12 bg-white/5 backdrop-blur-sm rounded-full border border-white/10 z-20"
-								/> */}
+								/>
 							</div>
 						</Reveal>
 					</div>
