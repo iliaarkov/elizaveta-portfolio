@@ -59,7 +59,7 @@ export default function PortfolioPage() {
 							<div className="space-y-4">
 								<p className="text-xl md:text-2xl font-light tracking-widest uppercase text-periwinkle/80">
 									{t.hero.role}
-								</p>
+								</p><br />
 								<p className="text-coral font-playfair italic text-2xl">
 									{t.hero.status}
 								</p>
