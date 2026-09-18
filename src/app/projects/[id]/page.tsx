@@ -42,13 +42,20 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   };
 
   return (
-    <main className="min-h-screen bg-phthalo text-periwinkle font-manrope pb-20 selection:bg-phlox selection:text-phthalo relative">
-      {/* Декоративные плавающие пузыри с низким z-index */}
-      <Bubble size={240} className="fixed -top-16 -right-16 opacity-15 pointer-events-none" />
-      <Bubble size={160} className="fixed bottom-20 -left-12 opacity-10 pointer-events-none" />
+    <main className="relative min-h-screen bg-phthalo text-periwinkle font-manrope pb-20 selection:bg-phlox selection:text-phthalo">
+      
+      {/* ФОНОВЫЙ СЛОЙ С ПУЗЫРЯМИ */}
+      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden select-none">
+        <div className="absolute -top-16 -right-16 opacity-15">
+          <Bubble size={240} />
+        </div>
+        <div className="absolute bottom-10 -left-10 opacity-10">
+          <Bubble size={160} />
+        </div>
+      </div>
 
-      {/* КОМПАКТНАЯ ВЕРХНЯЯ НАВИГАЦИЯ */}
-      <nav className="relative z-50 px-6 py-6 border-b border-atlantis/10 bg-phthalo/60 backdrop-blur-md">
+      {/* АККУРАТНАЯ ВЕРХНЯЯ НАВИГАЦИЯ БЕЗ ЛИШНИХ ПАДДИНГОВ */}
+      <nav className="relative z-40 w-full px-6 py-4 border-b border-atlantis/10 bg-phthalo/80 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <Link 
             href={`/?lang=${lang}`} 
@@ -84,10 +91,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </nav>
 
-      {/* ШАПКА КЕЙСА (БЕЗ ЛИШНЕЙ ПУСТОТЫ) */}
-      <header className="px-6 pt-10 pb-12 max-w-7xl mx-auto">
+      {/* ШАПКА КЕЙСА С МИНИМАЛЬНЫМ ВЕРХНИМ ОТСТУПОМ (pt-6) */}
+      <header className="relative z-10 px-6 pt-6 pb-10 max-w-7xl mx-auto">
         <Reveal width="100%">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
             {projectContent.platforms?.map((plat) => (
               <span key={plat} className="text-[11px] uppercase tracking-widest text-atlantis font-bold px-3 py-1 rounded-full bg-atlantis/10 border border-atlantis/20">
                 {plat}
@@ -95,19 +102,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             ))}
           </div>
 
-          <h1 className="font-playfair text-5xl sm:text-6xl md:text-8xl text-phlox mb-4 tracking-tight leading-[0.95]">
+          <h1 className="font-playfair text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-phlox mb-3 tracking-tight leading-[0.95]">
             {projectContent.title}
           </h1>
 
           {projectContent.tagline && (
-            <p className="text-lg md:text-xl font-light text-verbena font-playfair italic mb-8">
+            <p className="text-base sm:text-lg md:text-xl font-light text-verbena font-playfair italic mb-6">
               {projectContent.tagline}
             </p>
           )}
         </Reveal>
         
         {/* МЕТРИКИ (BENTO GRID) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {projectContent.metrics.map((metric, i) => (
             <Reveal key={i} width="100%">
               <div className="bg-atlantis/10 border border-atlantis/20 p-5 rounded-2xl backdrop-blur-sm h-full flex flex-col justify-center">
