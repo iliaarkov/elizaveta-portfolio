@@ -256,14 +256,20 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
           {/* 3 ВИДЕО В РЯД НА ДЕСКТОПЕ, ДРУГ ПОД ДРУГОМ НА ТЕЛЕФОНЕ */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projectData.videos.map((vid, idx) => (
-              <Reveal key={idx} width="100%">
-                <ReelsPlayer 
-                  src={vid.url} 
-                  title={vid.title?.[lang]} 
-                />
-              </Reveal>
-            ))}
+            {projectData.videos.map((vid, idx) => {
+              // Автоматически выбираем URL в зависимости от выбранного языка:
+              const videoSrc = typeof vid.url === "string" ? vid.url : vid.url[lang];
+
+              return (
+                <Reveal key={`${idx}-${lang}`} width="100%">
+                  <ReelsPlayer 
+                    key={videoSrc} // key гарантирует плавную перезагрузку плеера при смене языка
+                    src={videoSrc} 
+                    title={vid.title?.[lang]} 
+                  />
+                </Reveal>
+              );
+            })}
           </div>
         </section>
       )}
