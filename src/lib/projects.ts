@@ -1,17 +1,28 @@
+export interface ProjectMediaItem {
+  url: string;
+  title?: { ru: string; en: string };
+  poster?: string;
+}
+
 export interface Project {
   id: string;
   year: string;
-  imageUrl?: string; // <-- путь к картинке проекта (например, '/images/projects/ugc.jpg')
-  videoUrl?: string;
+  imageUrl?: string;
+  videos?: ProjectMediaItem[];
+  photos?: { url: string; caption?: { ru: string; en: string } }[];
+  covers?: { url: string; title: string }[];
 }
 
 export interface ProjectContent {
   title: string;
-  tags: string[];
-  desc: string;
+  tagline?: string;
+  platforms?: string[];
+  story: string;
   role: string;
   focus: string;
   metrics: { label: string; value: string }[];
+  galleryTitle?: string;
+  videoSectionTitle?: string;
 }
 
 export const projects: Project[] = [
@@ -19,24 +30,90 @@ export const projects: Project[] = [
     id: 'ugc-ecommerce', 
     year: '2023-2024', 
     imageUrl: '/images/projects/ugc.jpg',
-    videoUrl: '/videos/ugc.mp4' 
+    videos: [
+      { 
+        url: '/videos/ugc-1.mp4', 
+        title: { ru: 'Используем солнце как декор', en: 'Sunlight as Home Decor' } 
+      },
+      { 
+        url: '/videos/ugc-2.mp4', 
+        title: { ru: 'Интерьер в стиле флоры', en: 'Flora Style Interior' } 
+      },
+      { 
+        url: '/videos/ugc-3.mp4', 
+        title: { ru: 'Необычный декор', en: 'Unusual Accent Decor' } 
+      }
+    ]
   },
   { 
     id: 'green-home', 
     year: '2024', 
     imageUrl: '/images/projects/green.jpg',
-    videoUrl: '/videos/green.mp4' 
-  },
-  { 
-    id: '12sirens', 
-    year: '2022', 
-    imageUrl: '/images/projects/sirens.jpg',
-    videoUrl: '/videos/sirens.mp4' 
+    photos: [
+      { url: '/images/green-home/stats.jpg', caption: { ru: 'Аналитика и рост просмотров', en: 'Channel Analytics & Growth' } },
+      { url: '/images/green-home/before-after.jpg', caption: { ru: 'Профиль: До / После', en: 'Profile: Before vs After' } }
+    ],
+    videos: [
+      { 
+        url: '/videos/green-1.mp4', 
+        title: { ru: 'Экспертный совет: пересадка', en: 'Expert Tip: Repotting' } 
+      },
+      { 
+        url: '/videos/green-2.mp4', 
+        title: { ru: 'Полив и освещение', en: 'Watering & Lighting Routine' } 
+      },
+      { 
+        url: '/videos/green-3.mp4', 
+        title: { ru: 'Выбираем растения для дома', en: 'Best Plants for Apartments' } 
+      }
+    ]
   },
   { 
     id: 'penna', 
     year: '2021-2024', 
     imageUrl: '/images/projects/penna.jpg',
-    videoUrl: '/videos/penna.mp4' 
+    covers: [
+      { url: '/images/penna/sea.jpg', title: 'море обнимает меня' },
+      { url: '/images/penna/morning.jpg', title: 'до утра' },
+      { url: '/images/penna/party.jpg', title: 'вечеринка на своей стороне' }
+    ],
+    videos: [
+      { 
+        url: '/videos/penna-1.mp4', 
+        title: { ru: 'Сниппет на «пустоту»', en: 'Snippet: “Pustota”' } 
+      },
+      { 
+        url: '/videos/penna-2.mp4', 
+        title: { ru: 'Сниппет «бежать или жить»', en: 'Snippet: “Run or Live”' } 
+      },
+      { 
+        url: '/videos/penna-3.mp4', 
+        title: { ru: 'Сниппет «теням не выжить без света»', en: 'Snippet: “Shadows Need Light”' } 
+      }
+    ]
+  },
+  { 
+    id: '12sirens', 
+    year: '2022', 
+    imageUrl: '/images/projects/sirens.jpg',
+    photos: [
+      { url: '/images/12sirens/photo-1.jpg', caption: { ru: 'Айдентика бренда', en: 'Brand Visual Identity' } },
+      { url: '/images/12sirens/photo-2.jpg', caption: { ru: 'Эксклюзивные украшения', en: 'Exclusive Jewelry Pieces' } },
+      { url: '/images/12sirens/photo-3.jpg', caption: { ru: 'Упаковка и эстетика', en: 'Packaging & Details' } }
+    ],
+    videos: [
+      { 
+        url: '/videos/sirens-1.mp4', 
+        title: { ru: 'Продающее видео 01', en: 'Story Video: Collection Drop' } 
+      },
+      { 
+        url: '/videos/sirens-2.mp4', 
+        title: { ru: 'Продающее видео 02', en: 'Story Video: Craft & Texture' } 
+      },
+      { 
+        url: '/videos/sirens-3.mp4', 
+        title: { ru: 'Продающее видео 03', en: 'Story Video: Jewelry in Motion' } 
+      }
+    ]
   }
 ];
