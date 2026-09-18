@@ -63,7 +63,8 @@ export const projects: Project[] = [
     imageUrl: '/images/projects/green.jpg',
     photos: [
       { url: '/images/green-home/stats.jpg', caption: { ru: 'Аналитика и рост просмотров', en: 'Channel Analytics & Growth' } },
-      { url: '/images/green-home/before-after.jpg', caption: { ru: 'Профиль: До / После', en: 'Profile: Before vs After' } }
+      { url: '/images/green-home/before.jpg', caption: { ru: 'Профиль: До', en: 'Profile: Before' } },
+      { url: '/images/green-home/after.jpg', caption: { ru: 'Профиль: После', en: 'Profile: After' } }
     ],
     videos: [
       { 
