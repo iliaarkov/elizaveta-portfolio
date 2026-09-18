@@ -1,18 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { translations } from "@/lib/translations";
 import { projects } from "@/lib/projects";
 import { Reveal } from "@/components/Reveal";
 import { ProjectCard } from "@/components/ProjectCard";
 import { ContactSection } from "@/components/ContactSection";
 import { Marquee } from "@/components/Marquee";
-import { BikiniFlower } from "@/components/BikiniFlower";
 import { Bubble } from "@/components/Bubble";
 
 export default function PortfolioPage() {
-  // В реальном приложении это может приходить из Context или URL /ru или /en
   const [lang, setLang] = useState<"ru" | "en">("ru");
   const t = translations[lang];
 
@@ -40,69 +37,68 @@ export default function PortfolioPage() {
         </div>
       </nav>
 
-			{/* HERO SECTION WITH JELLYFISH BACKGROUND */}
-			<section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
-					
-					{/* Пузырь 1: Сверху слева */}
-    <div className="absolute top-[15%] left-[8%] z-0 animate-bubble-float">
-        <Bubble size={120} className="opacity-60" />
-    </div>
+      {/* HERO SECTION WITH JELLYFISH BACKGROUND */}
+      <section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
+        {/* Пузырь 1: Сверху слева */}
+        <div className="absolute top-[15%] left-[8%] z-0 animate-bubble-float">
+          <Bubble size={120} className="opacity-60" />
+        </div>
 
-    {/* Пузырь 2: Снизу справа */}
-    <div className="absolute bottom-[12%] right-[10%] z-0 animate-bubble-float" style={{ animationDelay: '2s' }}>
-        <Bubble size={240} className="opacity-40" />
-    </div>
+        {/* Пузырь 2: Снизу справа */}
+        <div className="absolute bottom-[12%] right-[10%] z-0 animate-bubble-float" style={{ animationDelay: '2s' }}>
+          <Bubble size={240} className="opacity-40" />
+        </div>
 
-    {/* Пузырь 3: Мелкий для акцента */}
-    <div className="absolute top-[20%] right-[20%] z-0 animate-bubble-float" style={{ animationDelay: '4s' }}>
-        <Bubble size={60} className="opacity-30" />
-    </div>
-					
-					<div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-							
-							{/* ЛЕВАЯ ЧАСТЬ: ТЕКСТ */}
-							<div className="relative z-10 order-2 lg:order-1 text-left">
-									<Reveal>
-											<h1 className="font-playfair text-6xl md:text-8xl text-phlox leading-[0.9] mb-6">
-													{t.hero.name} <br /> {t.hero.surname}
-											</h1>
-									</Reveal>
-									<Reveal>
-											<div className="space-y-4">
-													<p className="text-xl md:text-2xl font-light tracking-widest uppercase text-periwinkle/80">
-															{t.hero.role}
-													</p>
-													<br />
-													<p className="text-verbena font-playfair italic text-2xl">
-															{t.hero.status}
-													</p>
-											</div>
-									</Reveal>
-							</div>
+        {/* Пузырь 3: Мелкий для акцента */}
+        <div className="absolute top-[20%] right-[20%] z-0 animate-bubble-float" style={{ animationDelay: '4s' }}>
+          <Bubble size={60} className="opacity-30" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          {/* ЛЕВАЯ ЧАСТЬ: ТЕКСТ */}
+          <div className="relative z-10 order-2 lg:order-1 text-left">
+            <Reveal>
+              <h1 className="font-playfair text-6xl md:text-8xl text-phlox leading-[0.9] mb-6">
+                {t.hero.name} <br /> {t.hero.surname}
+              </h1>
+            </Reveal>
+            <Reveal>
+              <div className="space-y-4">
+                <p className="text-xl md:text-2xl font-light tracking-widest uppercase text-periwinkle/80">
+                  {t.hero.role}
+                </p>
+                <br />
+                <p className="text-verbena font-playfair italic text-2xl">
+                  {t.hero.status}
+                </p>
+              </div>
+            </Reveal>
+          </div>
 
-							{/* ПРАВАЯ ЧАСТЬ: ФОТО В ЦВЕТКЕ */}
-							<div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
-									<Reveal>
-											<div className="relative w-72 h-72 md:w-[450px] md:h-[450px]">
-													<div 
-															className="absolute inset-0 animate-wobble overflow-hidden border-[6px] border-phlox/40 shadow-2xl shadow-phthalo/50"
-															style={{ isolation: 'isolate' }}
-													>
-															<div 
-																	className="w-full h-full scale-110"
-																	style={{ 
-																			backgroundImage: 'url(/images/me.jpg)',
-																			backgroundSize: 'cover',
-																			backgroundPosition: 'center',
-																	}}
-															/>
-															<div className="absolute inset-0 bg-gradient-to-t from-phthalo/40 to-transparent" />
-													</div>
-											</div>
-									</Reveal>
-							</div>
-					</div>
-			</section>
+          {/* ПРАВАЯ ЧАСТЬ: ФОТО В ЦВЕТКЕ */}
+          <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end">
+            <Reveal>
+              <div className="relative w-72 h-72 md:w-112.5 md:h-112.5">
+                <div 
+                  className="absolute inset-0 animate-wobble overflow-hidden border-[6px] border-phlox/40 shadow-2xl shadow-phthalo/50"
+                  style={{ isolation: 'isolate' }}
+                >
+                  <div 
+                    className="w-full h-full scale-110"
+                    style={{ 
+                      backgroundImage: 'url(/images/me.jpg)',
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-phthalo/40 to-transparent" />
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
       {/* ABOUT / PROFILE */}
       <section className="py-24 px-6 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
@@ -165,22 +161,29 @@ export default function PortfolioPage() {
             <h2 className="font-playfair text-5xl md:text-7xl text-phlox">{t.projTitle}</h2>
             <br />
             <br />
-						<div className="font-manrope text-sm text-verbena uppercase tracking-widest hidden md:block">
+            <div className="font-manrope text-sm text-verbena uppercase tracking-widest hidden md:block">
               {projects.length} {t.projCases}
             </div>
           </div>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
-          {projects.map((project, index) => (
-            <Reveal key={project.id} overflowVisible={true}>
-              <ProjectCard 
-                project={project} 
-                content={t.projects[project.id as keyof typeof t.projects]} 
-                index={index + 1}
-              />
-            </Reveal>
-          ))}
+          {projects.map((project, index) => {
+            // Получаем контент конкретного проекта по его id:
+            const projectContent = t.projects[project.id as keyof typeof t.projects];
+
+            return (
+              <Reveal key={project.id} overflowVisible={true}>
+                <ProjectCard 
+                  project={project} 
+                  content={projectContent} 
+                  index={index + 1}
+                  lang={lang}
+                  viewLabel={t.projectLabels.view} 
+                />
+              </Reveal>
+            );
+          })}
         </div>
       </section>
 

@@ -4,24 +4,28 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { Project } from "@/lib/projects";
+import { Project, ProjectContent } from "@/lib/projects";
 
 interface ProjectCardProps {
   project: Project;
-  content: {
-    title: string;
-    desc: string;
-    role: string;
-  };
+  content: ProjectContent;
   index: number;
+  lang: "ru" | "en";
+  viewLabel?: string;
 }
 
-export const ProjectCard = ({ project, content, index }: ProjectCardProps) => {
+export const ProjectCard = ({ 
+  project, 
+  content, 
+  index, 
+  lang,
+  viewLabel = "View project"
+}: ProjectCardProps) => {
   // Форматируем индекс (1 -> 01)
   const formattedIndex = index < 10 ? `0${index}` : index;
 
   return (
-    <Link href={`/projects/${project.id}`} className="group block">
+    <Link href={`/projects/${project.id}?lang=${lang}`} className="group block">
       <div className="relative flex flex-col gap-6">
         
         {/* IMAGE / VISUAL CONTAINER (16:9) */}
@@ -33,7 +37,7 @@ export const ProjectCard = ({ project, content, index }: ProjectCardProps) => {
           <motion.div 
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-atlantis/20 via-transparent to-phlox/10"
+            className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-atlantis/20 via-transparent to-phlox/10"
           >
             <span className="font-playfair text-9xl font-black text-atlantis/10 pointer-events-none">
               {formattedIndex}
@@ -61,9 +65,10 @@ export const ProjectCard = ({ project, content, index }: ProjectCardProps) => {
             <span className="text-coral font-bold text-sm tracking-tighter">
               {formattedIndex}
             </span>
-            <div className="h-[1px] w-8 bg-atlantis/30" />
+            <div className="h-px w-8 bg-atlantis/30" />
             <div className="flex gap-2">
-              {project.tags.slice(0, 2).map((tag) => (
+              {/* Теги берутся из content.tags */}
+              {content.tags?.slice(0, 2).map((tag: string) => (
                 <span key={tag} className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold">
                   {tag}
                 </span>
@@ -80,7 +85,7 @@ export const ProjectCard = ({ project, content, index }: ProjectCardProps) => {
           </p>
 
           <div className="mt-2 flex items-center gap-2 text-atlantis text-xs font-bold uppercase tracking-widest group-hover:text-coral transition-colors">
-            <span>View project</span>
+            <span>{viewLabel}</span>
             <motion.span
               animate={{ x: [0, 5, 0] }}
               transition={{ duration: 1.5, repeat: Infinity }}

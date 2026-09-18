@@ -3,11 +3,10 @@
 import React, { use } from "react";
 import Link from "next/link";
 import { notFound, useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
-import { projects, Project, ProjectContent } from "@/lib/projects";
+import { projects, ProjectContent } from "@/lib/projects";
 import { translations } from "@/lib/translations";
 import { Reveal } from "@/components/Reveal";
-import { ArrowLeft, BarChart3, Target, Zap, Play } from "lucide-react";
+import { ArrowLeft, Target, Zap, Play } from "lucide-react";
 import { Bubble } from "@/components/Bubble";
 
 interface ProjectPageProps {
@@ -23,9 +22,15 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const t = translations[lang];
   
   const projectData = projects.find((p) => p.id === id);
-  const projectContent = (t.projects as any)[id] as ProjectContent;
+  // Безопасное получение контента проекта без 'any'
+  const projectsDict = t.projects as Record<string, ProjectContent | undefined>;
+  const projectContent = projectsDict[id];
 
   if (!projectData || !projectContent) notFound();
+
+  const nextProjectIndex = (projects.findIndex(p => p.id === id) + 1) % projects.length;
+  const nextProjectId = projects[nextProjectIndex].id;
+  const nextProjectTitle = projectsDict[nextProjectId]?.title || "";
 
   return (
     <main className="min-h-screen bg-phthalo text-periwinkle font-manrope pb-24 overflow-hidden">
@@ -43,7 +48,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <span className="text-xs font-bold uppercase tracking-widest">{t.projectLabels.back}</span>
         </Link>
         <div className="text-[10px] font-black px-3 py-1 border border-phlox/30 rounded-full text-phlox">
-          CASE STYDY // {projectData.year}
+          CASE STUDY // {projectData.year}
         </div>
       </nav>
 
@@ -56,16 +61,18 @@ export default function ProjectPage({ params }: ProjectPageProps) {
         </Reveal>
         
         {/* METRICS BENTO GRID */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {projectContent.metrics.map((metric, i) => (
-            <Reveal key={i}>
-              <div className="bg-atlantis/10 border border-atlantis/20 p-6 rounded-3xl backdrop-blur-sm">
-                <div className="text-coral text-3xl md:text-4xl font-black mb-1">{metric.value}</div>
-                <div className="text-[10px] uppercase tracking-widest text-periwinkle/50 font-bold">{metric.label}</div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
+        {projectContent.metrics && projectContent.metrics.length > 0 && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {projectContent.metrics.map((metric: { label: string; value: string }, i: number) => (
+              <Reveal key={i}>
+                <div className="bg-atlantis/10 border border-atlantis/20 p-6 rounded-3xl backdrop-blur-sm">
+                  <div className="text-coral text-3xl md:text-4xl font-black mb-1">{metric.value}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-periwinkle/50 font-bold">{metric.label}</div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        )}
       </header>
 
       {/* MAIN CONTENT: THE SHOWCASE */}
@@ -102,26 +109,30 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
         {/* RIGHT: MOBILE PREVIEW (VIDEO) */}
         <div className="lg:col-span-5 relative flex justify-center">
-            <Reveal overflowVisible={true}>
-              {/* iPhone Frame Mockup */}
-              <div className="relative w-[280px] h-[580px] md:w-[320px] md:h-[650px] bg-phthalo border-[8px] border-atlantis/30 rounded-[3rem] shadow-2xl overflow-hidden shadow-phlox/10">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-atlantis/30 rounded-b-2xl z-20" />
-                
-                {/* VIDEO PLACEHOLDER */}
-                <div className="absolute inset-0 bg-gradient-to-b from-atlantis/20 to-phthalo flex items-center justify-center group cursor-pointer">
-                    <motion.div 
-                        whileHover={{ scale: 1.1 }}
-                        className="w-16 h-16 bg-phlox rounded-full flex items-center justify-center text-phthalo z-10"
-                    >
-                        <Play fill="currentColor" />
-                    </motion.div>
-                    {/* Сюда вставляется видео */}
-                    <div className="absolute inset-0 opacity-40 group-hover:opacity-60 transition-opacity">
-                        <img src="/images/video-placeholder.jpg" alt="preview" className="w-full h-full object-cover" />
-                    </div>
+          <Reveal overflowVisible={true}>
+            <div className="relative w-70 h-145 md:w-80 md:h-162.5 bg-phthalo border-8 border-atlantis/30 rounded-[3rem] shadow-2xl overflow-hidden shadow-phlox/10 isolate">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-atlantis/30 rounded-b-2xl z-20" />
+              
+              {/* VIDEO PLAYER */}
+              {projectData.videoUrl ? (
+                <video 
+                  src={projectData.videoUrl} 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="absolute inset-0 w-full h-full object-cover z-0"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-linear-to-b from-atlantis/20 to-phthalo flex items-center justify-center">
+                  <Play fill="currentColor" className="text-phlox" />
                 </div>
-              </div>
-            </Reveal>
+              )}
+              
+              {/* Стеклянный блик поверх экрана телефона */}
+              <div className="absolute inset-0 bg-linear-to-tr from-white/5 via-transparent to-transparent pointer-events-none z-10" />
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -132,11 +143,11 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <span className="text-[10px] uppercase tracking-[0.4em] text-coral font-black">{t.projectLabels.next}</span>
           </div>
           <Link 
-            href={`/projects/${projects[(projects.findIndex(p => p.id === id) + 1) % projects.length].id}?lang=${lang}`}
+            href={`/projects/${nextProjectId}?lang=${lang}`}
             className="group inline-block"
           >
             <h2 className="font-playfair text-5xl md:text-8xl text-phlox group-hover:text-coral transition-all duration-500 group-hover:scale-105">
-              { (t.projects as any)[projects[(projects.findIndex(p => p.id === id) + 1) % projects.length].id].title }
+              {nextProjectTitle}
             </h2>
           </Link>
         </Reveal>
