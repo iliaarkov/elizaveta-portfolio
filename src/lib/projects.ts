@@ -36,22 +36,22 @@ export const projects: Project[] = [
     videos: [
       { 
         url: { 
-          ru: '/videos/ugc-1-ru.mov', 
-          en: '/videos/ugc-1-en.mov' 
+          ru: '/videos/ugc-1-ru.mp4', 
+          en: '/videos/ugc-1-en.mp4' 
         }, 
         title: { ru: 'Используем солнце как декор', en: 'Sunlight as Home Decor' } 
       },
       { 
         url: { 
-          ru: '/videos/ugc-2-ru.mov', 
-          en: '/videos/ugc-2-en.mov' 
+          ru: '/videos/ugc-2-ru.mp4', 
+          en: '/videos/ugc-2-en.mp4' 
         }, 
         title: { ru: 'Интерьер в стиле флоры', en: 'Flora Style Interior' } 
       },
       { 
         url: { 
-          ru: '/videos/ugc-3-ru.mov', 
-          en: '/videos/ugc-3-en.mov' 
+          ru: '/videos/ugc-3-ru.mp4', 
+          en: '/videos/ugc-3-en.mp4' 
         }, 
         title: { ru: 'Необычный декор', en: 'Unusual Accent Decor' } 
       }
@@ -101,8 +101,8 @@ export const projects: Project[] = [
     videos: [
       { 
         url: {
-          ru: '/videos/penna-1.mov',
-          en: '/videos/penna-1.mov'
+          ru: '/videos/penna-1.mp4',
+          en: '/videos/penna-1.mp4'
         }, 
         title: { ru: 'Сниппет на «пустоту»', en: 'Snippet: “Pustota”' }
       },
@@ -127,9 +127,9 @@ export const projects: Project[] = [
     year: '2022', 
     imageUrl: '/images/projects/sirens.jpg',
     photos: [
-      { url: '/images/12sirens/photo-1.HEIC', caption: { ru: 'Айдентика бренда', en: 'Brand Visual Identity' } },
-      { url: '/images/12sirens/photo-2.HEIC', caption: { ru: 'Эксклюзивные украшения', en: 'Exclusive Jewelry Pieces' } },
-      { url: '/images/12sirens/photo-3.HEIC', caption: { ru: 'Упаковка и эстетика', en: 'Packaging & Details' } }
+      { url: '/images/12sirens/photo-1.jpg', caption: { ru: 'Айдентика бренда', en: 'Brand Visual Identity' } },
+      { url: '/images/12sirens/photo-2.jpg', caption: { ru: 'Эксклюзивные украшения', en: 'Exclusive Jewelry Pieces' } },
+      { url: '/images/12sirens/photo-3.jpg', caption: { ru: 'Упаковка и эстетика', en: 'Packaging & Details' } }
     ],
     videos: [
       { 
@@ -148,8 +148,8 @@ export const projects: Project[] = [
       },
       { 
         url: { 
-          ru: '/videos/sirens-3.mov', 
-          en: '/videos/sirens-3.mov' 
+          ru: '/videos/sirens-3.mp4', 
+          en: '/videos/sirens-3.mp4' 
         }, 
         title: { ru: 'Продающее видео 03', en: 'Story Video: Jewelry in Motion' } 
       }
