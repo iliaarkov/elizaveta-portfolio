@@ -76,12 +76,12 @@ export const ProjectCard = ({
               </span>
               <div className="h-px w-8 bg-atlantis/30" />
               <div className="flex flex-wrap gap-2">
-                {content.tags?.slice(0, 2).map((tag: string) => (
-                  <span key={tag} className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+								{content.tags?.slice(0, 2).map((tag: string) => (
+									<span key={tag} className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold">
+										{tag}
+									</span>
+								))}
+							</div>
             </div>
 
             {/* Название */}
@@ -91,8 +91,8 @@ export const ProjectCard = ({
 
             {/* Описание */}
             <p className="text-periwinkle/70 line-clamp-3 text-sm leading-relaxed">
-              {content.desc}
-            </p>
+							{content.desc || content.story}
+						</p>
           </div>
 
           {/* Ссылка "Смотреть проект" — прижата к самому низу карточки */}

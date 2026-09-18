@@ -15,15 +15,18 @@ export interface Project {
 
 export interface ProjectContent {
   title: string;
+  tags?: string[];
+  desc?: string;
   tagline?: string;
   platforms?: string[];
-  story: string;
+  story?: string;
   role: string;
   focus: string;
   metrics: { label: string; value: string }[];
   galleryTitle?: string;
   videoSectionTitle?: string;
 }
+
 
 export const projects: Project[] = [
   { 
