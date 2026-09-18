@@ -7,11 +7,17 @@ interface Props {
   children: React.ReactNode;
   width?: "fit-content" | "100%";
   delay?: number;
-  // Добавим проп, чтобы отключать обрезку там, где это нужно
   overflowVisible?: boolean; 
+  className?: string; // <-- Добавлен проп className
 }
 
-export const Reveal = ({ children, width = "fit-content", delay = 0.25, overflowVisible = false }: Props) => {
+export const Reveal = ({ 
+  children, 
+  width = "fit-content", 
+  delay = 0.25, 
+  overflowVisible = false,
+  className = ""
+}: Props) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
@@ -23,8 +29,17 @@ export const Reveal = ({ children, width = "fit-content", delay = 0.25, overflow
   }, [isInView, mainControls]);
 
   return (
-    <div ref={ref} style={{ position: "relative", width, overflow: overflowVisible ? "visible" : "hidden" }}>
+    <div 
+      ref={ref} 
+      className={className}
+      style={{ 
+        position: "relative", 
+        width, 
+        overflow: overflowVisible ? "visible" : "hidden" 
+      }}
+    >
       <motion.div
+        className={className.includes("h-full") ? "h-full flex flex-col" : undefined}
         variants={{
           hidden: { opacity: 0, y: 75 },
           visible: { opacity: 1, y: 0 },

@@ -157,23 +157,23 @@ export default function PortfolioPage() {
       {/* SELECTED PROJECTS */}
       <section className="py-24 px-6 max-w-7xl mx-auto" id="projects">
         <Reveal>
-          <div className="flex items-baseline justify-between mb-16 border-b border-atlantis/20 pb-8">
-            <h2 className="font-playfair text-5xl md:text-7xl text-phlox">{t.projTitle}</h2>
-            <br />
-            <br />
-            <div className="font-manrope text-sm text-verbena uppercase tracking-widest hidden md:block">
+          <div className="mb-16 border-b border-atlantis/20 pb-8">
+            <h2 className="font-playfair text-5xl md:text-7xl text-phlox mb-3">
+              {t.projTitle}
+            </h2>
+            <div className="font-manrope text-xs md:text-sm text-verbena uppercase tracking-[0.25em] font-semibold">
               {projects.length} {t.projCases}
             </div>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+        {/* Сетка 2x2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20 items-stretch">
           {projects.map((project, index) => {
-            // Получаем контент конкретного проекта по его id:
             const projectContent = t.projects[project.id as keyof typeof t.projects];
 
             return (
-              <Reveal key={project.id} overflowVisible={true}>
+              <Reveal key={project.id} overflowVisible={true} className="h-full">
                 <ProjectCard 
                   project={project} 
                   content={projectContent} 
