@@ -71,11 +71,11 @@ export const ContactSection = ({ lang }: ContactSectionProps) => {
           <div className="mt-12 space-y-4">
             <div className="flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold mb-1">Email</span>
-              <span className="text-phlox font-medium">hello@samokhovets.com</span>
+              <span className="text-phlox font-medium">samohovetsliza@gmail.com</span>
             </div>
             <div className="flex flex-col">
               <span className="text-[10px] uppercase tracking-[0.2em] text-atlantis font-bold mb-1">Socials</span>
-              <span className="text-phlox font-medium">Telegram · Instagram · LinkedIn</span>
+              <span className="text-phlox font-medium"><a href="#">Telegram</a> · <a href="https://www.instagram.com/lizapenna_">Instagram</a> · <a href="https://www.linkedin.com/in/elizaveta-samokhovets-611942421">LinkedIn</a></span>
             </div>
           </div>
         </div>
