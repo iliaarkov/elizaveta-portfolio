@@ -72,21 +72,21 @@ export const projects: Project[] = [
           ru: '/videos/green-1.mp4', 
           en: '/videos/green-1.mp4' 
         }, 
-        title: { ru: 'Экспертный совет: пересадка', en: 'Expert Tip: Repotting' } 
+        // title: { ru: 'Экспертный совет: пересадка', en: 'Expert Tip: Repotting' } 
       },
       { 
         url: { 
           ru: '/videos/green-2.mp4', 
           en: '/videos/green-2.mp4' 
         }, 
-        title: { ru: 'Полив и освещение', en: 'Watering & Lighting Routine' } 
+        // title: { ru: 'Полив и освещение', en: 'Watering & Lighting Routine' } 
       },
       { 
         url: { 
           ru: '/videos/green-3.mp4', 
           en: '/videos/green-3.mp4' 
         }, 
-        title: { ru: 'Выбираем растения для дома', en: 'Best Plants for Apartments' } 
+        // title: { ru: 'Выбираем растения для дома', en: 'Best Plants for Apartments' } 
       }
     ]
   },
@@ -105,7 +105,7 @@ export const projects: Project[] = [
           ru: '/videos/penna-1.mp4',
           en: '/videos/penna-1.mp4'
         }, 
-        title: { ru: 'Сниппет на «пустоту»', en: 'Snippet: “Pustota”' }
+        title: { ru: 'Сниппет «пустота»', en: 'Snippet: “Pustota”' }
       },
       {
         url: {
@@ -128,9 +128,9 @@ export const projects: Project[] = [
     year: '2022', 
     imageUrl: '/images/projects/sirens.jpg',
     photos: [
-      { url: '/images/12sirens/photo-1.jpg', caption: { ru: 'Айдентика бренда', en: 'Brand Visual Identity' } },
+      { url: '/images/12sirens/photo-1.jpg', caption: { ru: 'Упаковка и эстетика', en: 'Packaging & Details' } },
       { url: '/images/12sirens/photo-2.jpg', caption: { ru: 'Эксклюзивные украшения', en: 'Exclusive Jewelry Pieces' } },
-      { url: '/images/12sirens/photo-3.jpg', caption: { ru: 'Упаковка и эстетика', en: 'Packaging & Details' } }
+      { url: '/images/12sirens/photo-3.jpg', caption: { ru: 'Айдентика бренда', en: 'Brand Visual Identity' } }
     ],
     videos: [
       { 

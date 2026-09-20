@@ -190,7 +190,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             {projectData.photos.map((photo, i) => (
               <Reveal key={i} width="100%">
                 <div className="group flex flex-col gap-3">
-                  <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-atlantis/20 bg-atlantis/5 relative shadow-lg">
+                  <div className="aspect-[9/16] rounded-2xl overflow-hidden border border-atlantis/20 bg-atlantis/5 relative shadow-lg">
                     <img 
                       src={photo.url} 
                       alt={photo.caption?.[lang] || `Photo ${i + 1}`}
