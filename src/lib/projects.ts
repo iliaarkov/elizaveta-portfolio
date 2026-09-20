@@ -19,6 +19,7 @@ export interface ProjectContent {
   desc?: string;
   tagline?: string;
   platforms?: string[];
+	subtitle?: string;
   story?: string;
   role: string;
   focus: string;

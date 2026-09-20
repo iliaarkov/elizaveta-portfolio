@@ -138,7 +138,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <Reveal width="100%">
               <div className="space-y-4">
                 <h2 className="text-phlox font-playfair text-2xl md:text-3xl italic flex items-center gap-2">
-                  <Sparkles size={20} className="text-coral" /> История & Реализация
+                  <Sparkles size={20} className="text-coral" /> {projectContent.subtitle}
                 </h2>
                 <div className="text-base sm:text-lg md:text-xl font-light leading-relaxed text-periwinkle/85 whitespace-pre-line">
                   {projectContent.story}
