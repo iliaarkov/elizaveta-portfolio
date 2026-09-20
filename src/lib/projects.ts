@@ -130,7 +130,7 @@ export const projects: Project[] = [
     photos: [
       { url: '/images/12sirens/photo-1.jpg', caption: { ru: 'Упаковка и эстетика', en: 'Packaging & Details' } },
       { url: '/images/12sirens/photo-2.jpg', caption: { ru: 'Эксклюзивные украшения', en: 'Exclusive Jewelry Pieces' } },
-      { url: '/images/12sirens/photo-3.jpg', caption: { ru: 'Айдентика бренда', en: 'Brand Visual Identity' } }
+      { url: '/images/12sirens/photo-3.jpg', caption: { ru: 'Фото продукта', en: 'Product photos' } }
     ],
     videos: [
       { 
