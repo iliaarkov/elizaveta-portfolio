@@ -32,7 +32,7 @@ export interface ProjectContent {
 export const projects: Project[] = [
   { 
     id: 'ugc-ecommerce', 
-    year: '2023-2024', 
+    year: '2026', 
     imageUrl: '/images/projects/ugc.jpg',
     videos: [
       { 
@@ -60,7 +60,7 @@ export const projects: Project[] = [
   },
   { 
     id: 'green-home', 
-    year: '2024', 
+    year: '2026', 
     imageUrl: '/images/projects/green.jpg',
     photos: [
       { url: '/images/green-home/stats.jpg', caption: { ru: 'Аналитика и рост просмотров', en: 'Channel Analytics & Growth' } },
@@ -93,7 +93,7 @@ export const projects: Project[] = [
   },
   { 
     id: 'penna', 
-    year: '2021-2024', 
+    year: '2022-2026', 
     imageUrl: '/images/projects/penna.jpg',
     covers: [
       { url: '/images/penna/sea.jpg', title: 'море обнимает меня' },
@@ -126,7 +126,7 @@ export const projects: Project[] = [
   },
   { 
     id: '12sirens', 
-    year: '2022', 
+    year: '2025', 
     imageUrl: '/images/projects/sirens.jpg',
     photos: [
       { url: '/images/12sirens/photo-1.jpg', caption: { ru: 'Упаковка и эстетика', en: 'Packaging & Details' } },
