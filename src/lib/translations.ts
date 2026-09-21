@@ -4,7 +4,7 @@ export const translations = {
     hero: {
       name: "Elizaveta",
       surname: "Samokhovets",
-      role: "Social Media Specialist / Content Producer",
+      role: "Social Media Specialist / Content Producer / UGC Creator",
       status: "Open to remote collaboration",
     },
     about: {
@@ -124,7 +124,7 @@ export const translations = {
     hero: {
       name: "Елизавета",
       surname: "Самоховец",
-      role: "Специалист по социальным сетям / Контент-продюсер",
+      role: "Специалист по социальным сетям / Контент-продюсер / UGC Креатор",
       status: "Открыта к удаленному сотрудничеству",
     },
     about: {
