@@ -1,6 +1,6 @@
 "use client";
 
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import Link from "next/link";
 import { notFound, useSearchParams, useRouter } from "next/navigation";
 import { projects, ProjectContent } from "@/lib/projects";
@@ -9,6 +9,7 @@ import { Reveal } from "@/components/Reveal";
 import { ArrowLeft, ArrowRight, Target, Zap, Layers, Sparkles } from "lucide-react";
 import { Bubble } from "@/components/Bubble";
 import { ReelsPlayer } from "@/components/ReelsPlayer";
+import Image from "next/image";
 
 interface ProjectPageProps {
   params: Promise<{ id: string }>;
@@ -40,6 +41,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const handleLanguageChange = (newLang: "ru" | "en") => {
     router.replace(`/projects/${id}?lang=${newLang}`);
   };
+
+	const [activeAudioVideoId, setActiveAudioVideoId] = useState<string | null>(null);
+
+  const handleToggleSound = (videoId: string) => {
+    setActiveAudioVideoId((prev) => (prev === videoId ? null : videoId));
+	};
 
   return (
     <main className="relative min-h-screen bg-phthalo text-periwinkle font-manrope pb-20 selection:bg-phlox selection:text-phthalo">
@@ -191,11 +198,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <Reveal key={i} width="100%">
                 <div className="group flex flex-col gap-3">
                   <div className="aspect-[9/16] rounded-2xl overflow-hidden border border-atlantis/20 bg-atlantis/5 relative shadow-lg">
-                    <img 
+                    {/* <img 
                       src={photo.url} 
                       alt={photo.caption?.[lang] || `Photo ${i + 1}`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    /> */}
+										<Image
+											src={photo.url}
+											alt={photo.caption?.[lang] || `Photo ${i + 1}`}
+											fill
+											sizes="(max-width: 768px) 100vw, 33vw"
+											className="object-cover"
+											loading="lazy"
+										/>
                   </div>
                   {photo.caption && (
                     <p className="text-xs md:text-sm text-periwinkle/70 font-medium">
@@ -224,11 +239,19 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <Reveal key={i} width="100%">
                 <div className="group flex flex-col gap-3">
                   <div className="aspect-square rounded-2xl overflow-hidden border border-atlantis/20 bg-atlantis/5 relative shadow-lg">
-                    <img 
+                    {/* <img 
                       src={cover.url} 
                       alt={cover.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
+                    /> */}
+										<Image
+											src={cover.url}
+											alt={cover.title}
+											fill
+											sizes="(max-width: 768px) 100vw, 33vw"
+											className="object-cover"
+											loading="lazy"
+										/>
                   </div>
                   <p className="text-xs md:text-sm text-phlox font-playfair italic">
                     «{cover.title}»
@@ -263,10 +286,12 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               return (
                 <Reveal key={`${idx}-${lang}`} width="100%">
                   <ReelsPlayer 
-                    key={videoSrc} // key гарантирует плавную перезагрузку плеера при смене языка
-                    src={videoSrc} 
-                    title={vid.title?.[lang]} 
-                  />
+										id={`video-${idx}`}
+										src={videoSrc} 
+										title={vid.title?.[lang]} 
+										isMuted={activeAudioVideoId !== `video-${idx}`}
+										onToggleSound={handleToggleSound}
+									/>
                 </Reveal>
               );
             })}
@@ -280,6 +305,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           {/* Предыдущий кейс */}
           <Link
             href={`/projects/${prevProject.id}?lang=${lang}`}
+						prefetch={false}
             className="group flex items-center gap-4 p-5 rounded-2xl border border-atlantis/15 bg-atlantis/5 hover:border-coral/40 transition-all"
           >
             <div className="p-3 rounded-full bg-phthalo border border-coral/30 text-coral group-hover:-translate-x-1 transition-transform">
@@ -298,6 +324,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           {/* Следующий кейс */}
           <Link
             href={`/projects/${nextProject.id}?lang=${lang}`}
+						prefetch={false}
             className="group flex items-center justify-between p-5 rounded-2xl border border-atlantis/15 bg-atlantis/5 hover:border-phlox/40 transition-all text-right"
           >
             <div className="text-left sm:text-right w-full">

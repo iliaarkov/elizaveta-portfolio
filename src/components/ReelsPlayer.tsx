@@ -4,20 +4,34 @@ import React, { useRef, useState, useEffect } from "react";
 import { Volume2, VolumeX, Play, Pause } from "lucide-react";
 
 interface ReelsPlayerProps {
+  id: string;
   src: string;
   title?: string;
+  isMuted: boolean;
+  onToggleSound: (id: string) => void;
 }
 
-export const ReelsPlayer = ({ src, title }: ReelsPlayerProps) => {
+export const ReelsPlayer = ({
+  id,
+  src,
+  title,
+  isMuted,
+  onToggleSound,
+}: ReelsPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const progressContainerRef = useRef<HTMLDivElement>(null);
 
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  // Обновление прогресс-бара
+  // Синхронизируем состояние HTML-элемента с пропом isMuted
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
   const handleTimeUpdate = () => {
     if (videoRef.current) {
       const current = videoRef.current.currentTime;
@@ -37,14 +51,11 @@ export const ReelsPlayer = ({ src, title }: ReelsPlayerProps) => {
     }
   };
 
-  const toggleSound = (e: React.MouseEvent) => {
+  const handleSoundClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    if (!videoRef.current) return;
-    videoRef.current.muted = !videoRef.current.muted;
-    setIsMuted(videoRef.current.muted);
+    onToggleSound(id);
   };
 
-  // Перемотка по клику на прогресс-бар
   const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (!progressContainerRef.current || !videoRef.current) return;
@@ -71,28 +82,32 @@ export const ReelsPlayer = ({ src, title }: ReelsPlayerProps) => {
           loop
           muted={isMuted}
           playsInline
+          preload="metadata"
           onTimeUpdate={handleTimeUpdate}
           className="w-full h-full object-cover"
         />
 
-        {/* Затемнение поверх при наведении или паузе */}
         <div 
           className={`absolute inset-0 bg-phthalo/30 transition-opacity duration-300 pointer-events-none ${
             !isPlaying || isHovered ? "opacity-100" : "opacity-0"
           }`} 
         />
 
-        {/* Кнопка MUTE/UNMUTE — заметная в правом верхнем углу */}
+        {/* Кнопка звука */}
         <button
           type="button"
-          onClick={toggleSound}
-          className="absolute top-3 right-3 z-30 p-2.5 rounded-full bg-phthalo/70 backdrop-blur-md border border-phlox/30 text-phlox hover:text-coral hover:scale-110 transition-all shadow-md"
+          onClick={handleSoundClick}
+          className={`absolute top-3 right-3 z-30 p-2.5 rounded-full backdrop-blur-md border transition-all shadow-md ${
+            !isMuted 
+              ? "bg-coral text-phthalo border-coral scale-105" 
+              : "bg-phthalo/70 border-phlox/30 text-phlox hover:text-coral hover:scale-110"
+          }`}
           title={isMuted ? "Включить звук" : "Выключить звук"}
         >
           {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
         </button>
 
-        {/* Кнопка PLAY / PAUSE по центру (по клику / наведению) */}
+        {/* Кнопка Play/Pause */}
         <div 
           className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-all duration-300 ${
             !isPlaying ? "opacity-100 scale-100" : isHovered ? "opacity-70 scale-90" : "opacity-0 scale-75"
@@ -103,21 +118,18 @@ export const ReelsPlayer = ({ src, title }: ReelsPlayerProps) => {
           </div>
         </div>
 
-        {/* ПОЛЗУНОК В СТИЛЕ IPHONE (снизу видео) */}
+        {/* Прогресс-бар */}
         <div 
           ref={progressContainerRef}
           onClick={handleSeek}
           className="absolute bottom-3 left-4 right-4 z-20 h-4 flex items-center cursor-pointer group/bar"
         >
-          {/* Серая дорожка */}
           <div className="relative w-full h-1 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
-            {/* Заполненная часть */}
             <div 
               className="h-full bg-coral transition-all duration-75"
               style={{ width: `${progress}%` }}
             />
           </div>
-          {/* Круглый бегунок на конце (появляется при наведении) */}
           <div 
             className="absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 bg-white rounded-full shadow-md transition-opacity duration-150 pointer-events-none opacity-0 group-hover/bar:opacity-100"
             style={{ left: `calc(${progress}% - 5px)` }}
@@ -125,7 +137,6 @@ export const ReelsPlayer = ({ src, title }: ReelsPlayerProps) => {
         </div>
       </div>
 
-      {/* Подпись к видео */}
       {title && (
         <p className="text-center text-xs md:text-sm text-periwinkle/80 font-medium tracking-wide">
           {title}
